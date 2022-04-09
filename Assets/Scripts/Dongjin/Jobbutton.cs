@@ -6,50 +6,54 @@ using TMPro;
 public class Jobbutton : ItemCard
 {
     [Header("±¸¸Å Á¤º¸")]
-    [SerializeField] int Panguinidx;
+    [SerializeField] int Penguinidx;
     [SerializeField] bool Buy;
-    [SerializeField] protected string _Description;
-    [SerializeField] protected string _ButtonText;
     [SerializeField] int BuyincrementMoney;
-
-
     [Space(10)]
     [Header("·¹º§¾÷ Á¤º¸")]
     [SerializeField] int Level;
     [SerializeField] int MaxLevel;
+    [SerializeField] int firstLevelUpMoney;
     [SerializeField] int LevelUpMoney;
     [SerializeField] int incrementMoney;
-    private Text buttontext2;
-    private void Awake()
-    {
-        IconImage =_IconImage;
-        ItemName = _ItemName;
-        Description = _Description;
-        ButtonText = _ButtonText;
-    }
+
+    private TextMeshProUGUI LevelText;
     protected override void Start()
     {
         base.Start();
-        buttontext2 = gameObject.transform.Find("Button").Find("ButtonText2").GetComponent<Text>();
-        buttontext2.text = $"({BuyMoney})";
+        buttonText.text = "±¸¸Å" + "\n" + $"({GetThousandCommaText(BuyMoney)})";
+        LevelText = gameObject.transform.Find("Level").GetComponent<TextMeshProUGUI>();
+        buttonText.text = "°í¿ëÇÏ±â" + "\n" + $"({GetThousandCommaText(BuyMoney)})";
+        desc.text = "ÃÊ´ç Å‰µæ °ñµå" + "\n" + $"{GetThousandCommaText(BuyincrementMoney + incrementMoney * Level)}";
     }
     protected override void Action()
     {
-        if(GameManager.Instance.Coin >= BuyMoney&&Buy== false)
+        if (GameManager.Instance.Coin >= BuyMoney && Buy == false)
         {
+            GameObject.Find("Penguins").transform.GetChild(Penguinidx).gameObject.SetActive(true);
+
             GameManager.Instance.Coin -= BuyMoney;
-            GameObject.Find("Panguins").transform.GetChild(Panguinidx).gameObject.SetActive(true);
-            GameManager.Instance.ClickCoinUp += BuyincrementMoney;
-            Text buttontext = gameObject.transform.Find("Button").Find("ButtonText").GetComponent<Text>();
-            buttontext.text = "·¹º§¾÷";
-            buttontext2.text = $"({LevelUpMoney + 1000 * Level})";
+            /*GameManager.Instance.ClickCoinUp += BuyincrementMoney;*/
+            GameManager.Instance.secCoinup += BuyincrementMoney;
+            Buy = true;
+
+            buttonText.text = "·¹º§¾÷" + "\n" + $"({GetThousandCommaText(firstLevelUpMoney + LevelUpMoney * Level)})";
+            desc.text = "ÃÊ´ç Å‰µæ °ñµå" + "\n" + $"{GetThousandCommaText(BuyincrementMoney + incrementMoney * Level)} -> {GetThousandCommaText(BuyincrementMoney + incrementMoney * (Level + 1))}";
         }
-        else if(GameManager.Instance.Coin >= BuyMoney)
+        else if (GameManager.Instance.Coin >= BuyincrementMoney + incrementMoney * Level && Level != MaxLevel)
         {
-            GameManager.Instance.Coin -= LevelUpMoney + 1000 * Level;
-            GameManager.Instance.ClickCoinUp += incrementMoney +incrementMoney* Level;
+            GameManager.Instance.Coin -= firstLevelUpMoney + LevelUpMoney * Level;
+            /*GameManager.Instance.ClickCoinUp += firstincrementMoney +incrementMoney* Level;*/
+            GameManager.Instance.secCoinup += BuyincrementMoney + incrementMoney * Level;
             Level++;
-            buttontext2.text = $"({LevelUpMoney + 1000 * Level})";
+
+            buttonText.text = "·¹º§¾÷" + "\n" + $"({GetThousandCommaText(firstLevelUpMoney + LevelUpMoney * Level)})";
+            desc.text = "ÃÊ´ç Å‰µæ °ñµå" + "\n" + $"{GetThousandCommaText(BuyincrementMoney + incrementMoney * Level)} -> {GetThousandCommaText(BuyincrementMoney + incrementMoney * (Level + 1))}";
+            LevelText.text = $"Lv.{Level}";
         }
+    }
+    public string GetThousandCommaText(int data)
+    {
+        return string.Format("{0:#,###}", data);
     }
 }
