@@ -8,8 +8,11 @@ public abstract class ItemCard : MonoBehaviour
 {
     public Sprite IconImage;
     public string ItemName;
-    public string Description;
-    public string ButtonText;
+    protected string Description;
+    protected string ButtonText;
+
+    protected TextMeshProUGUI desc;
+    protected TextMeshProUGUI buttonText;
 
     public int BuyMoney;
     protected virtual void Start()
@@ -20,13 +23,13 @@ public abstract class ItemCard : MonoBehaviour
         TextMeshProUGUI Name = gameObject.transform.Find("Name").GetComponent<TextMeshProUGUI>();
         Name.text = ItemName;
 
-        TextMeshProUGUI desc = gameObject.transform.Find("Description").GetComponent<TextMeshProUGUI>();
+        desc = gameObject.transform.Find("Description").GetComponent<TextMeshProUGUI>();
         desc.text = Description;
 
         Button button = gameObject.transform.Find("Button").GetComponent<Button>();
         button.onClick.AddListener(() => Action());
 
-        TextMeshProUGUI buttonText = button.gameObject.transform.Find("ButtonText").GetComponent<TextMeshProUGUI>();
+        buttonText = button.gameObject.transform.Find("ButtonText").GetComponent<TextMeshProUGUI>();
         buttonText.text = ButtonText;
     }
     protected abstract void Action();
