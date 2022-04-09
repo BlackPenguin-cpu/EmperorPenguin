@@ -420,7 +420,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02865783b271f7d459a46f5d871758cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Panguinidx: 0
+  BuyMoney: 10000
+  Panguinidx: 1
+  Buy: 0
+  _IconImage: {fileID: 21300000, guid: 36db8ec5724d17342b4fd97d62beb796, type: 3}
+  _ItemName: "\uD669\uC81C \uD33D\uADC4"
+  _Description: 
+  _ButtonText: "\uAD6C\uB9E4 \\n(8000)"
+  BuyincrementMoney: 0
   Level: 0
   MaxLevel: 0
   LevelUpMoney: 0
