@@ -14,7 +14,7 @@ public abstract class ItemCard : MonoBehaviour
     protected TextMeshProUGUI desc;
     protected TextMeshProUGUI buttonText;
 
-    public int BuyMoney;
+    public long BuyMoney;
     protected virtual void Start()
     {
         Image image = gameObject.transform.Find("Icon").GetComponent<Image>();
