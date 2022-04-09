@@ -17,9 +17,9 @@ public class Realestate : ItemCard
     }
     private void Update()
     {
-        if(Buy == true)
+        if (Buy == true)
             timer += Time.deltaTime;
-        desc.text = "가격" + "\n" + GetThousandCommaText( BuyMoney + incrementMoney * (int)timer) + $"(+{GetThousandCommaText(incrementMoney)}s)";
+        desc.text = "가격" + "\n" + GetThousandCommaText(BuyMoney + incrementMoney * (int)timer) + $"(+{GetThousandCommaText(incrementMoney)}s)";
     }
     protected override void Action()
     {
@@ -29,9 +29,9 @@ public class Realestate : ItemCard
             buttonText.text = "판매";
             Buy = true;
         }
-        else if(Buy == true)
+        else if (Buy == true)
         {
-            GameManager.Instance.Coin += (BuyMoney + incrementMoney * (int)timer);
+            GameManager.Instance.Coin += BuyMoney + incrementMoney * (int)timer;
             buttonText.text = "구매";
             timer = 0;
             Buy = false;

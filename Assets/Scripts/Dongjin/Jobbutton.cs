@@ -52,7 +52,7 @@ public class Jobbutton : ItemCard
             LevelText.text = $"Lv.{Level}";
         }
     }
-    public string GetThousandCommaText(int data)
+    public string GetThousandCommaText(long data)
     {
         return string.Format("{0:#,###}", data);
     }

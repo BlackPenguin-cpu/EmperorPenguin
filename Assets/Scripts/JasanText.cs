@@ -3,20 +3,43 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class JasanText : MonoBehaviour
+public class JasanText : ItemCard
 {
-    TextMeshProUGUI text;
-    private void Start()
+    [SerializeField] long SellMoney;
+    [Header("±¸¸Å Á¤º¸")]
+    [SerializeField] int Jasanidx;
+    [SerializeField] bool Buy;
+    [SerializeField] int secincrement,clickincrement;
+
+    protected override void Start()
     {
-        text = GetComponent<TextMeshProUGUI>();
+        base.Start();
+        buttonText.text = "±¸¸Å" + "\n" + $"({GetThousandCommaText(BuyMoney)})";
+        desc.text = $"ÃÊ´ç Å‰µæ °ñµå / Å¬¸¯ ´ç Å‰µæ °ñµå\n{secincrement}/{clickincrement}";
     }
-    void Update()
+    protected override void Action()
     {
-        text.text = "ÀÚ»ê : " + GetThousandCommaText(GameManager.Instance.Coin) + "\\";
+        if (GameManager.Instance.Coin >= BuyMoney && Buy == false)
+        {
+            GameObject.Find("Jasans").transform.GetChild(Jasanidx).gameObject.SetActive(true);
+            GameManager.Instance.Coin -= BuyMoney;
+            GameManager.Instance.secCoinup += secincrement;
+            GameManager.Instance.ClickCoinUp += clickincrement;
+            buttonText.text = "ÆÇ¸Å" + "\n" + $"({GetThousandCommaText(SellMoney)})";
+            Buy = true;
+        }
+        else if (Buy == true)
+        {
+            GameObject.Find("Jasans").transform.GetChild(Jasanidx).gameObject.SetActive(true);
+            GameManager.Instance.Coin += SellMoney;
+            GameManager.Instance.secCoinup -= secincrement;
+            GameManager.Instance.ClickCoinUp -= clickincrement;
+            buttonText.text = "±¸¸Å" + "\n" + $"({GetThousandCommaText(BuyMoney)})";
+            Buy = true;
+        }
     }
     public string GetThousandCommaText(long data)
     {
-        if (data == 0) return "0";
         return string.Format("{0:#,###}", data);
     }
 }
