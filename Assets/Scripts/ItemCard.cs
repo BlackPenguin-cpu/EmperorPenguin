@@ -6,13 +6,12 @@ using TMPro;
 
 public abstract class ItemCard : MonoBehaviour
 {
-    protected Sprite IconImage;
-    protected string ItemName;
-    protected string Description;
-    protected string ButtonText;
+    public Sprite IconImage;
+    public string ItemName;
+    public string Description;
+    public string ButtonText;
+
     public int BuyMoney;
-    bool Clicking;
-    TextMeshProUGUI buttonText;
     protected virtual void Start()
     {
         Image image = gameObject.transform.Find("Icon").GetComponent<Image>();
@@ -27,22 +26,8 @@ public abstract class ItemCard : MonoBehaviour
         Button button = gameObject.transform.Find("Button").GetComponent<Button>();
         button.onClick.AddListener(() => Action());
 
-        buttonText = button.gameObject.transform.Find("ButtonText").GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI buttonText = button.gameObject.transform.Find("ButtonText").GetComponent<TextMeshProUGUI>();
         buttonText.text = ButtonText;
-
-
-        button.onClick.AddListener(() => { buttonText.transform.localPosition -= new Vector3(0, -10); Clicking = true; });
-    }
-    protected virtual void Update()
-    {
-        if (Clicking)
-        {
-            if (Input.GetMouseButtonUp(0))
-            {
-                buttonText.transform.localPosition += new Vector3(0, 10);
-                Clicking = false;
-            }
-        }
     }
     protected abstract void Action();
 }

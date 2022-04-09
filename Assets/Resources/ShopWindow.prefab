@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6710789380124754265}
   - component: {fileID: 3446597288995490435}
   - component: {fileID: 7425632862023575055}
+  - component: {fileID: 3888648660573562300}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -106,10 +107,10 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: efe30c5330ef65648ad2e136411485a9, type: 3}
+    m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 21300000, guid: efe30c5330ef65648ad2e136411485a9, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: efe30c5330ef65648ad2e136411485a9, type: 3}
-    m_DisabledSprite: {fileID: 21300000, guid: efe30c5330ef65648ad2e136411485a9, type: 3}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -121,6 +122,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3888648660573562300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188505017037972906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 942d2f0cbd05c664ca75bae3f85eda4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UITextMeshPro: {fileID: 3432216370989117527}
 --- !u!1 &2296706470429299766
 GameObject:
   m_ObjectHideFlags: 0
