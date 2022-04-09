@@ -10,7 +10,7 @@ public abstract class ItemCard : MonoBehaviour
     protected string ItemName;
     protected string Description;
     protected string ButtonText;
-
+    public int BuyMoney;
     bool Clicking;
     TextMeshProUGUI buttonText;
     protected virtual void Start()
