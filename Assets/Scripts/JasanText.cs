@@ -6,12 +6,17 @@ using TMPro;
 public class JasanText : MonoBehaviour
 {
     TextMeshProUGUI text;
+    private void Start()
+    {
+        text = GetComponent<TextMeshProUGUI>();
+    }
     void Update()
     {
-        text.text = "자산 :" + GetThousandCommaText(GameManager.Instance.Coin) + "\\";
+        text.text = "자산 : " + GetThousandCommaText(GameManager.Instance.Coin) + "\\";
     }
-    public string GetThousandCommaText(int data)
+    public string GetThousandCommaText(long data)
     {
+        if (data == 0) return "0";
         return string.Format("{0:#,###}", data);
     }
 }
