@@ -12,6 +12,7 @@ public class Jobbutton : ItemCard
     [SerializeField] protected string _ItemName;
     [SerializeField] protected string _Description;
     [SerializeField] protected string _ButtonText;
+    [SerializeField] int BuyincrementMoney;
 
 
     [Space(10)]
@@ -42,6 +43,7 @@ public class Jobbutton : ItemCard
         {
             GameManager.Instance.Coin -= BuyMoney;
             GameObject.Find("Panguins").transform.GetChild(Panguinidx).gameObject.SetActive(true);
+            GameManager.Instance.ClickCoinUp += BuyincrementMoney;
             Text buttontext = gameObject.transform.Find("Button").Find("ButtonText").GetComponent<Text>();
             buttontext.text = "·¹º§¾÷";
             buttontext2.text = $"({LevelUpMoney + 1000 * Level})";
@@ -49,6 +51,7 @@ public class Jobbutton : ItemCard
         else if(GameManager.Instance.Coin >= BuyMoney)
         {
             GameManager.Instance.Coin -= LevelUpMoney + 1000 * Level;
+            GameManager.Instance.ClickCoinUp += incrementMoney +incrementMoney* Level;
             Level++;
             buttontext2.text = $"({LevelUpMoney + 1000 * Level})";
         }
