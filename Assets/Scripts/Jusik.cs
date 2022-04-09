@@ -12,9 +12,10 @@ class range
 }
 public class Jusik : MonoBehaviour
 {
-    float curTime;
+    float curTime = 60;
+    [SerializeField] float resetTime = 60;
     public int Count;
-    [SerializeField] int nowValue;
+    [SerializeField] long nowValue;
     [SerializeField] range upValue;
     [SerializeField] range downValue;
     [SerializeField] float upChance;
@@ -24,18 +25,35 @@ public class Jusik : MonoBehaviour
     string Description;
 
     TextMeshProUGUI desc;
+    [SerializeField] TextMeshProUGUI ValueChange;
     private void Update()
     {
         curTime += Time.deltaTime;
-        if (curTime >= 60)
+        desc.text = $"{GetThousandCommaText(nowValue)}원 \n {Count}주 소유";
+        if (curTime >= resetTime)
             JusikVariance();
     }
     void JusikVariance()
     {
+        curTime = 0;
+        long Value = nowValue;
         if (Random.Range(0, 100) < upChance)
             nowValue += (int)(nowValue * (Random.Range(upValue.min, upValue.max) / 100));
         else
             nowValue -= (int)(nowValue * (Random.Range(downValue.min, downValue.max) / 100));
+
+        long changeValue = Value - nowValue;
+
+        if (changeValue > 0)
+        {
+            ValueChange.color = Color.blue;
+            ValueChange.text = "▼" + GetThousandCommaText(changeValue);
+        }
+        else if (changeValue < 0)
+        {
+            ValueChange.color = Color.red;
+            ValueChange.text = "▲" + GetThousandCommaText(changeValue);
+        }
     }
     void Start()
     {
@@ -57,7 +75,7 @@ public class Jusik : MonoBehaviour
 
     void BuyAction()
     {
-        if (nowValue >= GameManager.Instance.Coin)
+        if (nowValue <= GameManager.Instance.Coin)
         {
             GameManager.Instance.Coin -= nowValue;
             Count++;
@@ -68,7 +86,13 @@ public class Jusik : MonoBehaviour
         if (Count >= 1)
         {
             Count--;
-            GameManager.Instance.Coin -= nowValue;
+            GameManager.Instance.Coin += nowValue;
         }
+    }
+    public string GetThousandCommaText(long data)
+    {
+        data = (long)Mathf.Abs(data);
+        if (data == 0) return "0";
+        return string.Format("{0:#,###}", data);
     }
 }
