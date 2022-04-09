@@ -10,6 +10,7 @@ public abstract class ItemCard : MonoBehaviour
     protected string ItemName;
     protected string Description;
     protected string ButtonText;
+    protected int BuyMoney;
     protected virtual void Start()
     {
         Image image = gameObject.transform.Find("Icon").GetComponent<Image>();
