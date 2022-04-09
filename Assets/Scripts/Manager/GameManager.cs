@@ -6,7 +6,7 @@ using DG.Tweening;
 public class GameManager : Singleton<GameManager>
 {
     [Header("Coin Info")]
-    public int Coin;
+    public long Coin;
     public int ClickCoinUp;
     public int secCoinup;
     public float CoinBouce;
