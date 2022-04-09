@@ -8,8 +8,6 @@ public class Jobbutton : ItemCard
     [Header("구매 정보")]
     [SerializeField] int Panguinidx;
     [SerializeField] bool Buy;
-    [SerializeField] protected Sprite _IconImage;
-    [SerializeField] protected string _ItemName;
     [SerializeField] protected string _Description;
     [SerializeField] protected string _ButtonText;
     [SerializeField] int BuyincrementMoney;
@@ -21,7 +19,6 @@ public class Jobbutton : ItemCard
     [SerializeField] int MaxLevel;
     [SerializeField] int LevelUpMoney;
     [SerializeField] int incrementMoney;
-
     private Text buttontext2;
     private void Awake()
     {
