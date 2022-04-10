@@ -7,7 +7,7 @@ public class Penguin : MonoBehaviour
 
     [SerializeField] float ChatTime;
     [SerializeField] GameObject Chat;
-
+    public int Penguinidx;
     private void Start()
     {
         StartCoroutine("Chatting");
@@ -17,7 +17,7 @@ public class Penguin : MonoBehaviour
         yield return new WaitForSeconds(ChatTime);
         float timer = 1;
         GameObject RandomChat = Chat.transform.GetChild(Random.Range(0, Chat.transform.childCount)).gameObject;
-        RandomChat.transform.position = Camera.main.WorldToScreenPoint(transform.position + Vector3.up * 1.5f);
+        RandomChat.transform.position = transform.position + Vector3.up * 2.5f;
         Color color = RandomChat.GetComponent<Image>().color;
         color.a = timer;
         RandomChat.GetComponent<Image>().color = color;
