@@ -30,11 +30,16 @@ public class LeaderPenguin : ItemCard
         if (GameManager.Instance.Coin >= firstLevelUpMoney + LevelUpMoney * Level && Level != MaxLevel)
         {
             GameManager.Instance.Coin -= firstLevelUpMoney + LevelUpMoney * Level;
-            GameManager.Instance.ClickCoinUp+= firstincrementMoney + incrementMoney * Level;
+            GameManager.Instance.ClickCoinUp+= incrementMoney * Level;
             Level++;
-            LevelText.text = $"Lv.{Level+1}";
+            LevelText.text = $"Lv.{Level}";
             buttonText.text = $"{firstLevelUpMoney + LevelUpMoney * Level}원";
             desc.text = "클릭 당 골드" + "\n" + $"{GetThousandCommaText(firstincrementMoney + incrementMoney * Level)}";
+            SoundManager.Instance.PlaySound("Buy", SoundType.SE, 1, 1);
+        }
+        else
+        {
+            SoundManager.Instance.PlaySound("Don_t_Buy", SoundType.SE, 1, 1);
         }
     }
     public string GetThousandCommaText(long data)
