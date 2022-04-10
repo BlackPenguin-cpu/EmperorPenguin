@@ -8,6 +8,7 @@ using UnityEngine;
 public class estate
 {
     public bool isBuy;
+    public long value;
     public string Name;
 }
 [System.Serializable]
@@ -70,6 +71,7 @@ public class ShopManager : MonoBehaviour
         {
             estate obj = saveData.dataSturctures.Find(x => x.Name == Structure.ItemName);
             Structure.ItemName = obj.Name;
+            Structure.realMoney = obj.value;
             Structure.Buy = obj.isBuy;
         }
         var Jasans = FindObjectsOfType<JasanText>();
@@ -107,6 +109,7 @@ public class ShopManager : MonoBehaviour
         foreach (var Structure in Structures)
         {
             estate estate = new estate();
+            estate.value = Structure.realMoney;
             estate.Name = Structure.ItemName;
             estate.isBuy = Structure.Buy;
             saveData.dataSturctures.Add(estate);

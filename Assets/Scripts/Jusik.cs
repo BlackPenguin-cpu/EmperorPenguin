@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 [System.Serializable]
 class range
@@ -26,9 +27,27 @@ public class Jusik : MonoBehaviour
 
     TextMeshProUGUI desc;
     [SerializeField] TextMeshProUGUI ValueChange;
+
+    float clickDuration;
+    bool isBuyClicking;
+    bool isSellClicking;
     private void Update()
     {
         curTime += Time.deltaTime;
+        if (isBuyClicking || isSellClicking)
+        {
+            clickDuration += Time.deltaTime;
+        }
+        if (isSellClicking && clickDuration > 1)
+        {
+            SellAction();
+            clickDuration -= 0.05f;
+        }
+        if (isBuyClicking && clickDuration > 1)
+        {
+            BuyAction();
+            clickDuration -= 0.05f;
+        }
         desc.text = $"{GetThousandCommaText(nowValue)}원 \n {Count}주 소유";
         if (curTime >= resetTime)
             JusikVariance();
@@ -104,5 +123,21 @@ public class Jusik : MonoBehaviour
         data = (long)Mathf.Abs(data);
         if (data == 0) return "0";
         return string.Format("{0:#,###}", data);
+    }
+    public void BuyCliking()
+    {
+        isBuyClicking = true;
+
+    }
+    public void SellCliking()
+    {
+        isSellClicking = true;
+
+    }
+    public void ClickUp()
+    {
+        isBuyClicking = false;
+        isSellClicking = false;
+        clickDuration = 0;
     }
 }

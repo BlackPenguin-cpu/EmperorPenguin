@@ -7,7 +7,8 @@ public class Realestate : ItemCard
 
     [Header("구매 정보")]
     public bool Buy;
-    [SerializeField] long incrementMoney;
+    private long incrementMoney;
+    public long realMoney;
     private float timer;
     protected override void Start()
     {
@@ -27,6 +28,7 @@ public class Realestate : ItemCard
         if (Buy == true)
             timer += Time.deltaTime;
         desc.text = "가격" + "\n" + GetThousandCommaText(BuyMoney + incrementMoney * (int)timer) + $"(+{GetThousandCommaText(incrementMoney)}s)";
+        realMoney = BuyMoney + incrementMoney * (int)timer;
     }
     protected override void Action()
     {

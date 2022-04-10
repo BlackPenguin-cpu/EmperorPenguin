@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public abstract class ItemCard : MonoBehaviour
+public abstract class ItemCard : MonoBehaviour 
 {
     public Sprite IconImage;
     public string ItemName;
@@ -33,4 +33,5 @@ public abstract class ItemCard : MonoBehaviour
         buttonText.text = ButtonText;
     }
     protected abstract void Action();
+
 }
