@@ -21,10 +21,19 @@ public class Jobbutton : ItemCard
     protected override void Start()
     {
         base.Start();
-        buttonText.text = "±¸¸Å" + "\n" + $"({GetThousandCommaText(BuyMoney)})";
+        if(Buy == false)
+        {
+ buttonText.text = "±¸¸Å" + "\n" + $"({GetThousandCommaText(BuyMoney)})";
         LevelText = gameObject.transform.Find("Level").GetComponent<TextMeshProUGUI>();
         buttonText.text = "°í¿ëÇÏ±â" + "\n" + $"({GetThousandCommaText(BuyMoney)})";
         desc.text = "ÃÊ´ç Å‰µæ °ñµå" + "\n" + $"{GetThousandCommaText(BuyincrementMoney + incrementMoney * Level)}";
+        }
+        else
+        {
+            buttonText.text = "·¹º§¾÷" + "\n" + $"({GetThousandCommaText(firstLevelUpMoney + LevelUpMoney * Level)})";
+            desc.text = "ÃÊ´ç Å‰µæ °ñµå" + "\n" + $"{GetThousandCommaText(BuyincrementMoney + incrementMoney * Level)} -> {GetThousandCommaText(BuyincrementMoney + incrementMoney * (Level + 1))}";
+            LevelText.text = $"Lv.{Level}";
+        }
     }
     protected override void Action()
     {
@@ -37,7 +46,6 @@ public class Jobbutton : ItemCard
             }
 
             GameManager.Instance.Coin -= BuyMoney;
-            /*GameManager.Instance.ClickCoinUp += BuyincrementMoney;*/
             GameManager.Instance.secCoinup += BuyincrementMoney;
             Buy = true;
             SoundManager.Instance.PlaySound("Buy", SoundType.SE, 1, 1);
@@ -47,13 +55,11 @@ public class Jobbutton : ItemCard
         else if (GameManager.Instance.Coin >= firstLevelUpMoney + LevelUpMoney * Level && Level != MaxLevel)
         {
             GameManager.Instance.Coin -= firstLevelUpMoney + LevelUpMoney * Level;
-            /*GameManager.Instance.ClickCoinUp += firstincrementMoney +incrementMoney* Level;*/
             GameManager.Instance.secCoinup += BuyincrementMoney + incrementMoney * Level;
             Level++;
-
             buttonText.text = "·¹º§¾÷" + "\n" + $"({GetThousandCommaText(firstLevelUpMoney + LevelUpMoney * Level)})";
             desc.text = "ÃÊ´ç Å‰µæ °ñµå" + "\n" + $"{GetThousandCommaText(BuyincrementMoney + incrementMoney * Level)} -> {GetThousandCommaText(BuyincrementMoney + incrementMoney * (Level + 1))}";
-            LevelText.text = $"Lv.{Level}";
+            LevelText.text = $"Lv.{Level+1}";
             SoundManager.Instance.PlaySound("Buy", SoundType.SE, 1, 1);
         }
         else if(GameManager.Instance.Coin <= firstLevelUpMoney + LevelUpMoney * Level|| GameManager.Instance.Coin <= BuyMoney)

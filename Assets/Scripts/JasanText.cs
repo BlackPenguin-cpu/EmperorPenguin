@@ -14,8 +14,16 @@ public class JasanText : ItemCard
     protected override void Start()
     {
         base.Start();
-        buttonText.text = "±∏∏≈" + "\n" + $"({GetThousandCommaText(BuyMoney)})";
-        desc.text = $"√ ¥Á ≈âµÊ ∞ÒµÂ / ≈¨∏Ø ¥Á ≈âµÊ ∞ÒµÂ\n{secincrement}/{clickincrement}";
+        if(Buy == false)
+        {
+            buttonText.text = "±∏∏≈" + "\n" + $"({GetThousandCommaText(BuyMoney)})";
+            desc.text = $"√ ¥Á ≈âµÊ ∞ÒµÂ / ≈¨∏Ø ¥Á ≈âµÊ ∞ÒµÂ\n{secincrement}/{clickincrement}";
+        }
+        else
+        {
+            buttonText.text = "±∏∏≈«‘";
+            desc.text = $"√ ¥Á ≈âµÊ ∞ÒµÂ / ≈¨∏Ø ¥Á ≈âµÊ ∞ÒµÂ\n{secincrement}/{clickincrement}";
+        }
     }
     protected override void Action()
     {

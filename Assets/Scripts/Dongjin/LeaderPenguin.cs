@@ -21,9 +21,9 @@ public class LeaderPenguin : ItemCard
         base.Start();
         LevelText = gameObject.transform.Find("Level").GetComponent<TextMeshProUGUI>();
         LevelText.text = $"Lv.{Level + 1}";
-        buttonText.text = $"{firstLevelUpMoney}원";
+        buttonText.text = $"{firstLevelUpMoney + LevelUpMoney * Level}원";
         desc.text = "클릭 당 골드" + "\n" + $"{GetThousandCommaText(firstincrementMoney + incrementMoney * Level)}";
-        GameManager.Instance.ClickCoinUp += firstincrementMoney;
+        GameManager.Instance.ClickCoinUp += firstincrementMoney + incrementMoney * Level;
     }
     protected override void Action()
     {

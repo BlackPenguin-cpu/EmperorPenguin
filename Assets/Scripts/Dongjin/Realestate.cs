@@ -12,8 +12,15 @@ public class Realestate : ItemCard
     protected override void Start()
     {
         base.Start();
-        desc.text = "가격" + "\n" + BuyMoney;
-        buttonText.text = "구매";
+        if(Buy == true)
+        {
+            buttonText.text = "판매";
+        }
+        else
+        {
+            desc.text = "가격" + "\n" + BuyMoney;
+            buttonText.text = "구매";
+        }
     }
     private void Update()
     {
