@@ -567,6 +567,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ChatTime: 3
   Chat: {fileID: 1824599041}
+  Anima:
+  - {fileID: 21300000, guid: 072a13eb7936dea4589834000935990f, type: 3}
+  - {fileID: 21300000, guid: 3c5473f25c3387f4486d64c1e00845df, type: 3}
   Penguinidx: 1
 --- !u!212 &39765087
 SpriteRenderer:
@@ -1043,6 +1046,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ChatTime: 7
   Chat: {fileID: 1602874446}
+  Anima:
+  - {fileID: 21300000, guid: 5ab95da25128fcf47a0fbecddc567267, type: 3}
+  - {fileID: 21300000, guid: feed04c7b5745124c9a60d54ae60df95, type: 3}
   Penguinidx: 2
 --- !u!212 &193415456
 SpriteRenderer:
@@ -4745,6 +4751,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ChatTime: 5
   Chat: {fileID: 886678112}
+  Anima:
+  - {fileID: 21300000, guid: 65c81e3dc86d5cc49b80b8779c508445, type: 3}
+  - {fileID: 21300000, guid: 32ff5b6700080ce48bb82d6d1e0786ac, type: 3}
   Penguinidx: 0
 --- !u!1 &1225548868
 GameObject:
@@ -7068,6 +7077,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 12583344}
     m_Modifications:
+    - target: {fileID: 793554746269141882, guid: 9399ac128dcee8641ba84c2c41d7fce3, type: 3}
+      propertyPath: m_text
+      value: "\uB300\uC7A5 \uD33D\uADC4"
+      objectReference: {fileID: 0}
+    - target: {fileID: 793554746269141882, guid: 9399ac128dcee8641ba84c2c41d7fce3, type: 3}
+      propertyPath: m_fontSize
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 1094736895513985194, guid: 9399ac128dcee8641ba84c2c41d7fce3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -7191,6 +7208,18 @@ PrefabInstance:
     - target: {fileID: 5837823323251852170, guid: 9399ac128dcee8641ba84c2c41d7fce3, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7510997948811719856, guid: 9399ac128dcee8641ba84c2c41d7fce3, type: 3}
+      propertyPath: m_text
+      value: Lv.150
+      objectReference: {fileID: 0}
+    - target: {fileID: 7510997948811719871, guid: 9399ac128dcee8641ba84c2c41d7fce3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 47
+      objectReference: {fileID: 0}
+    - target: {fileID: 7510997948811719871, guid: 9399ac128dcee8641ba84c2c41d7fce3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 41.143
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9399ac128dcee8641ba84c2c41d7fce3, type: 3}
@@ -7764,6 +7793,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ChatTime: 6
   Chat: {fileID: 264343342}
+  Anima:
+  - {fileID: 21300000, guid: 8a573a866fc98fa47965dbe10ef34339, type: 3}
+  - {fileID: 21300000, guid: 5099f14f1c2fe46408dd5f66270f3a4b, type: 3}
   Penguinidx: 3
 --- !u!212 &1719554909
 SpriteRenderer:

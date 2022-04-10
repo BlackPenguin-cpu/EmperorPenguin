@@ -21,18 +21,18 @@ public class LeaderPenguin : ItemCard
         base.Start();
         LevelText = gameObject.transform.Find("Level").GetComponent<TextMeshProUGUI>();
         LevelText.text = $"Lv.{Level + 1}";
-        buttonText.text = $"{LevelUpMoney}원";
+        buttonText.text = $"{firstLevelUpMoney}원";
         desc.text = "클릭 당 골드" + "\n" + $"{GetThousandCommaText(firstincrementMoney + incrementMoney * Level)}";
         GameManager.Instance.ClickCoinUp += firstincrementMoney;
     }
     protected override void Action()
     {
-        if (GameManager.Instance.Coin >= firstincrementMoney + LevelUpMoney * Level && Level != MaxLevel)
+        if (GameManager.Instance.Coin >= firstLevelUpMoney + LevelUpMoney * Level && Level != MaxLevel)
         {
-            Level++;
             GameManager.Instance.Coin -= firstLevelUpMoney + LevelUpMoney * Level;
             GameManager.Instance.ClickCoinUp+= firstincrementMoney + incrementMoney * Level;
-            LevelText.text = $"Lv.{Level + 1}";
+            Level++;
+            LevelText.text = $"Lv.{Level+1}";
             buttonText.text = $"{firstLevelUpMoney + LevelUpMoney * Level}원";
             desc.text = "클릭 당 골드" + "\n" + $"{GetThousandCommaText(firstincrementMoney + incrementMoney * Level)}";
         }

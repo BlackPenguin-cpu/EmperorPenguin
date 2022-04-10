@@ -10,7 +10,6 @@ public class Penguin : MonoBehaviour
     [SerializeField] GameObject Chat;
     [SerializeField] Sprite[] Anima;
     private int idx = 0;
-    [SerializeField] float AnimaSwaptime;
     public int Penguinidx;
     private void Start()
     {
@@ -44,7 +43,7 @@ public class Penguin : MonoBehaviour
     }
     IEnumerator AnimaSwap()
     {
-        yield return new WaitForSeconds(AnimaSwaptime);
+        yield return new WaitForSeconds(Random.Range(1,4));
         idx = idx * -1 + 1;
         GetComponent<SpriteRenderer>().sprite = Anima[idx];
         StartCoroutine("AnimaSwap");
