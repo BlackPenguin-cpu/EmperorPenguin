@@ -32,7 +32,7 @@ public class LeaderPenguin : ItemCard
             Level++;
             GameManager.Instance.Coin -= firstLevelUpMoney + LevelUpMoney * Level;
             GameManager.Instance.ClickCoinUp+= firstincrementMoney + incrementMoney * Level;
-            LevelText.text = $"´ëÀå ÆØ±Ï Lv.{Level + 1}";
+            LevelText.text = $"Lv.{Level + 1}";
             buttonText.text = $"{firstLevelUpMoney + LevelUpMoney * Level}¿ø";
             desc.text = "Å¬¸¯ ´ç °ñµå" + "\n" + $"{GetThousandCommaText(firstincrementMoney + incrementMoney * Level)}";
         }
