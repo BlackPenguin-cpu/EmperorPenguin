@@ -19,7 +19,7 @@ public class Penguin : MonoBehaviour
     IEnumerator Chatting()
     {
         yield return new WaitForSeconds(ChatTime);
-        if (Random.Range(0,3)==0)
+        if (Random.Range(0, 3) == 0)
         {
             SoundManager.Instance.PlaySound("Penguin", SoundType.SE, 15, 1);
             float timer = 1;
@@ -38,14 +38,14 @@ public class Penguin : MonoBehaviour
                 timer -= Time.deltaTime / 2;
                 yield return null;
             }
-            color.a = 0;
+            RandomChat.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color(0, 0, 0, 0);
         }
         StartCoroutine("Chatting");
         yield return null;
     }
     IEnumerator AnimaSwap()
     {
-        yield return new WaitForSeconds(Random.Range(1,4)); 
+        yield return new WaitForSeconds(Random.Range(1, 4));
         idx = idx * -1 + 1;
         GetComponent<SpriteRenderer>().sprite = Anima[idx];
         StartCoroutine("AnimaSwap");
