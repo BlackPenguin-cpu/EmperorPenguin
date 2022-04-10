@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IconImage: {fileID: 21300000, guid: 93281b9030170ad4998be02c10626d99, type: 3}
-  ItemName: "\uBC18\uC9C0"
+  ItemName: "\uBC18\uC9C0\uD558"
   BuyMoney: 30000000
   Buy: 0
   incrementMoney: 3000

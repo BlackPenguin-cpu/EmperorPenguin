@@ -21,20 +21,22 @@ public class SaveData
     public long SecCoin;
 
     public int leaderPenguinLevel;
-    public int Penguin1Level;
-    public int Penguin2Level;
-    public int Penguin3Level;
+    public int[] PenguinLevel = new int[3];
 
-    public estate roofTop;
-    public estate halfUnder;
-    public estate officetell;
-    public estate multiLiveHouse;
-    public estate SingleLiveHouse;
-    public estate apart50;
-    public estate Buliding10;
-    public estate Buliding30;
-    public estate Buliding50;
-    public estate Hotel;
+    public estate[] dataSturctures = new estate[10];
+
+    //public estate roofTop;
+    //public estate halfUnder;
+    //public estate officetell;
+    //public estate multiLiveHouse;
+    //public estate SingleLiveHouse;
+    //public estate apart50;
+    //public estate Buliding10;
+    //public estate Buliding30;
+    //public estate Buliding50;
+    //public estate Hotel;
+
+    public JusikData[] Jusik = new JusikData[5];
 
     public JusikData Menity;
     public JusikData Youtube;
@@ -50,10 +52,23 @@ public class ShopManager : MonoBehaviour
         SaveData saveData = new SaveData();
 
         saveData.leaderPenguinLevel = FindObjectOfType<LeaderPenguin>().Level;
-        saveData.
+
+        var penguins = FindObjectsOfType<Jobbutton>();
+        foreach (var penguin in penguins)
+            saveData.PenguinLevel[penguin.Penguinidx] = penguin.Level;
+
+        var Structures = FindObjectsOfType<Realestate>();
+        int count = 0;
+        foreach (var Structure in Structures)
+        {
+            saveData.dataSturctures[count].Name = Structure.ItemName;
+            saveData.dataSturctures[count].isBuy = Structure.Buy;
+            count++;
+        }
+
     }
     private void OnApplicationQuit()
     {
-        
+
     }
 }

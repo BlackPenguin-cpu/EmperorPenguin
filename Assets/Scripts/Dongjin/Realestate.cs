@@ -6,7 +6,7 @@ public class Realestate : ItemCard
 {
 
     [Header("구매 정보")]
-    [SerializeField] bool Buy;
+    public bool Buy;
     [SerializeField] long incrementMoney;
     private float timer;
     protected override void Start()

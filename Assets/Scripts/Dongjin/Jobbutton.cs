@@ -6,12 +6,12 @@ using TMPro;
 public class Jobbutton : ItemCard
 {
     [Header("구매 정보")]
-    [SerializeField] int Penguinidx;
+    public int Penguinidx;
     [SerializeField] bool Buy;
     [SerializeField] int BuyincrementMoney;
     [Space(10)]
     [Header("레벨업 정보")]
-    [SerializeField] int Level;
+    public int Level;
     [SerializeField] int MaxLevel;
     [SerializeField] int firstLevelUpMoney;
     [SerializeField] int LevelUpMoney;

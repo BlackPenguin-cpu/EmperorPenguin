@@ -12,7 +12,6 @@ public class GameManager : Singleton<GameManager>
     public float CoinBouce;
     float Coolodwn;
 
-
     private void Update()
     {
         Coolodwn += Time.deltaTime;
