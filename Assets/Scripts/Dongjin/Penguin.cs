@@ -8,10 +8,14 @@ public class Penguin : MonoBehaviour
 
     [SerializeField] float ChatTime;
     [SerializeField] GameObject Chat;
+    [SerializeField] Sprite[] Anima;
+    private int idx = 0;
+    [SerializeField] float AnimaSwaptime;
     public int Penguinidx;
     private void Start()
     {
         StartCoroutine("Chatting");
+        StartCoroutine("AnimaSwap");
     }
     IEnumerator Chatting()
     {
@@ -36,6 +40,14 @@ public class Penguin : MonoBehaviour
             }
         }
         StartCoroutine("Chatting");
+        yield return null;
+    }
+    IEnumerator AnimaSwap()
+    {
+        yield return new WaitForSeconds(AnimaSwaptime);
+        idx = idx * -1 + 1;
+        GetComponent<SpriteRenderer>().sprite = Anima[idx];
+        StartCoroutine("AnimaSwap");
         yield return null;
     }
 }
