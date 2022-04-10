@@ -25,17 +25,13 @@ public class JasanText : ItemCard
             GameManager.Instance.Coin -= BuyMoney;
             GameManager.Instance.secCoinup += secincrement;
             GameManager.Instance.ClickCoinUp += clickincrement;
-            buttonText.text = "판매" + "\n" + $"({GetThousandCommaText(SellMoney)})";
+            buttonText.text = "구매함";
             Buy = true;
+            SoundManager.Instance.PlaySound("Buy", SoundType.SE, 1, 1);
         }
-        else if (Buy == true)
+        else if (GameManager.Instance.Coin <= BuyMoney)
         {
-            GameObject.Find("Jasans").transform.GetChild(Jasanidx).gameObject.SetActive(true);
-            GameManager.Instance.Coin += SellMoney;
-            GameManager.Instance.secCoinup -= secincrement;
-            GameManager.Instance.ClickCoinUp -= clickincrement;
-            buttonText.text = "구매" + "\n" + $"({GetThousandCommaText(BuyMoney)})";
-            Buy = true;
+            SoundManager.Instance.PlaySound("Don_t_Buy", SoundType.SE, 1, 1);
         }
     }
     public string GetThousandCommaText(long data)

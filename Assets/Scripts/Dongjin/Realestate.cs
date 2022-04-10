@@ -27,14 +27,20 @@ public class Realestate : ItemCard
         {
             GameManager.Instance.Coin -= BuyMoney;
             buttonText.text = "판매";
+            SoundManager.Instance.PlaySound("Buy", SoundType.SE, 1, 1);
             Buy = true;
         }
         else if (Buy == true)
         {
             GameManager.Instance.Coin += BuyMoney + incrementMoney * (int)timer;
             buttonText.text = "구매";
+            SoundManager.Instance.PlaySound("Buy", SoundType.SE, 1, 1);
             timer = 0;
             Buy = false;
+        }
+        else if(GameManager.Instance.Coin <= BuyMoney)
+        {
+            SoundManager.Instance.PlaySound("Don_t_Buy", SoundType.SE, 1, 1);
         }
     }
     public string GetThousandCommaText(long data)
