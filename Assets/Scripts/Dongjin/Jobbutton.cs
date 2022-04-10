@@ -40,7 +40,7 @@ public class Jobbutton : ItemCard
             buttonText.text = "·¹º§¾÷" + "\n" + $"({GetThousandCommaText(firstLevelUpMoney + LevelUpMoney * Level)})";
             desc.text = "ÃÊ´ç Å‰µæ °ñµå" + "\n" + $"{GetThousandCommaText(BuyincrementMoney + incrementMoney * Level)} -> {GetThousandCommaText(BuyincrementMoney + incrementMoney * (Level + 1))}";
         }
-        else if (GameManager.Instance.Coin >= BuyincrementMoney + incrementMoney * Level && Level != MaxLevel)
+        else if (GameManager.Instance.Coin >= BuyincrementMoney + LevelUpMoney * Level && Level != MaxLevel)
         {
             GameManager.Instance.Coin -= firstLevelUpMoney + LevelUpMoney * Level;
             /*GameManager.Instance.ClickCoinUp += firstincrementMoney +incrementMoney* Level;*/
