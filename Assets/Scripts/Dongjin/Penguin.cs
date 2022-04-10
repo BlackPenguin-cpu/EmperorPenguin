@@ -38,6 +38,7 @@ public class Penguin : MonoBehaviour
                 timer -= Time.deltaTime / 2;
                 yield return null;
             }
+            color.a = 0;
         }
         StartCoroutine("Chatting");
         yield return null;

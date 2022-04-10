@@ -30,9 +30,18 @@ public class Jobbutton : ItemCard
         }
         else
         {
+            if (Level == MaxLevel)
+            {
+                buttonText.text = "ÃÖ´ë ·¹º§";
+                desc.text = "ÃÊ´ç Å‰µæ °ñµå" + "\n" + $"{GetThousandCommaText(BuyincrementMoney + incrementMoney * Level)}";
+                LevelText.text = $"Lv.Max";
+            }
+            else
+            {
             buttonText.text = "·¹º§¾÷" + "\n" + $"({GetThousandCommaText(firstLevelUpMoney + LevelUpMoney * Level)})";
             desc.text = "ÃÊ´ç Å‰µæ °ñµå" + "\n" + $"{GetThousandCommaText(BuyincrementMoney + incrementMoney * Level)} -> {GetThousandCommaText(BuyincrementMoney + incrementMoney * (Level + 1))}";
             LevelText.text = $"Lv.{Level}";
+            }
             for (int i = 0; i < 4; i++)
             {
                 if (GameObject.Find("Penguins").transform.GetChild(i).GetComponent<Penguin>().Penguinidx == Penguinidx)
