@@ -614,7 +614,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 31e77a2373f75ba4994fa909bd2263c6, type: 3}
     m_FontSize: 113
     m_FontStyle: 0
     m_BestFit: 0
@@ -1339,6 +1339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c210ceef6b1d7dd44a761680e6100b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  titleAudio: {fileID: 0}
   title: {fileID: 237646308}
   titletext: {fileID: 232107033}
   CreatorUI: {fileID: 31210479}
@@ -3355,7 +3356,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.619
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
