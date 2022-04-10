@@ -3263,7 +3263,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &791613750
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7406,9 +7406,21 @@ PrefabInstance:
       propertyPath: m_text
       value: Lv.150
       objectReference: {fileID: 0}
+    - target: {fileID: 7510997948811719856, guid: 9399ac128dcee8641ba84c2c41d7fce3, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7510997948811719871, guid: 9399ac128dcee8641ba84c2c41d7fce3, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 352.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 7510997948811719871, guid: 9399ac128dcee8641ba84c2c41d7fce3, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 140.72
+      objectReference: {fileID: 0}
     - target: {fileID: 7510997948811719871, guid: 9399ac128dcee8641ba84c2c41d7fce3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 47
+      value: -32.15
       objectReference: {fileID: 0}
     - target: {fileID: 7510997948811719871, guid: 9399ac128dcee8641ba84c2c41d7fce3, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -9260,7 +9272,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1956477134
 RectTransform:
   m_ObjectHideFlags: 0
