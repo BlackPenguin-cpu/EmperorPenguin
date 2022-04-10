@@ -7,8 +7,8 @@ public class GameManager : Singleton<GameManager>
 {
     [Header("Coin Info")]
     public long Coin;
-    public int ClickCoinUp;
-    public int secCoinup;
+    public long ClickCoinUp;
+    public long secCoinup;
     public float CoinBouce;
     float Coolodwn;
 
