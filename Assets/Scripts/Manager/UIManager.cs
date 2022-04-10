@@ -9,9 +9,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject[] ShopPage;
     [SerializeField] Sprite On, Off;
     private bool UIOn;
-
+    public bool SulJungOn;
+    [SerializeField] GameObject SoundManager;
     [SerializeField] GameObject LeaderUI;
-    private bool LeaderUIOn;
 
     private GameObject UIONOFF, UiButton, SulJungButton;
     void Start()
@@ -42,20 +42,16 @@ public class UIManager : MonoBehaviour
     }
     public void LeaderPenguin()
     {
-        if(LeaderUIOn == false)
-        {
             LeaderUI.transform.DOLocalMove(new Vector3(-445,-410,0),0.3f).SetEase(Ease.OutCirc);
             UiButton.transform.DOLocalMove(new Vector3(-489, -600, 0), 0.3f).SetEase(Ease.OutCirc);
             UIONOFF.GetComponent<Image>().sprite = On;
             UIOn = true;
-            LeaderUIOn = true;
-        }
-        else
-        {
-            LeaderUI.transform.DOLocalMove(new Vector3(-1700,-410, 0), 0.3f).SetEase(Ease.OutCirc);
+        
+    }
+    public void LeaderPenguinOff()
+    {
+            LeaderUI.transform.DOLocalMove(new Vector3(-1700, -410, 0), 0.3f).SetEase(Ease.OutCirc);
             UiButton.transform.DOLocalMove(new Vector3(-489, -371, 0), 0.3f).SetEase(Ease.OutCirc);
-            LeaderUIOn = false;
-        }
     }
     public void employee()
     {
@@ -78,6 +74,19 @@ public class UIManager : MonoBehaviour
         for(int i =0;i<4;i++)
         {
             ShopPage[i].transform.DOLocalMove(new Vector3(0, -1000, 0), 0.3f).SetEase(Ease.OutCirc);
+        }
+    }
+    public void SulJung()
+    {
+        if(SulJungOn == false)
+        {
+            SoundManager.transform.GetChild(0).GetChild(0).transform.DOScale(Vector3.one,0.3f);
+            SulJungOn = true;
+        }
+        else
+        {
+            SoundManager.transform.GetChild(0).GetChild(0).transform.DOScale(Vector3.zero, 0.3f);
+            SulJungOn = false;
         }
     }
 }

@@ -30,7 +30,11 @@ public class Jobbutton : ItemCard
     {
         if (GameManager.Instance.Coin >= BuyMoney && Buy == false)
         {
-            GameObject.Find("Penguins").transform.GetChild(Penguinidx).gameObject.SetActive(true);
+            for(int i = 0;i<4;i++)
+            {
+                if(GameObject.Find("Penguins").transform.GetChild(i).GetComponent<Penguin>().Penguinidx == Penguinidx)
+                    GameObject.Find("Penguins").transform.GetChild(i).gameObject.SetActive(true);
+            }
 
             GameManager.Instance.Coin -= BuyMoney;
             /*GameManager.Instance.ClickCoinUp += BuyincrementMoney;*/
@@ -40,7 +44,7 @@ public class Jobbutton : ItemCard
             buttonText.text = "·¹º§¾÷" + "\n" + $"({GetThousandCommaText(firstLevelUpMoney + LevelUpMoney * Level)})";
             desc.text = "ÃÊ´ç Å‰µæ °ñµå" + "\n" + $"{GetThousandCommaText(BuyincrementMoney + incrementMoney * Level)} -> {GetThousandCommaText(BuyincrementMoney + incrementMoney * (Level + 1))}";
         }
-        else if (GameManager.Instance.Coin >= BuyincrementMoney + LevelUpMoney * Level && Level != MaxLevel)
+        else if (GameManager.Instance.Coin >= firstLevelUpMoney + LevelUpMoney * Level && Level != MaxLevel)
         {
             GameManager.Instance.Coin -= firstLevelUpMoney + LevelUpMoney * Level;
             /*GameManager.Instance.ClickCoinUp += firstincrementMoney +incrementMoney* Level;*/
