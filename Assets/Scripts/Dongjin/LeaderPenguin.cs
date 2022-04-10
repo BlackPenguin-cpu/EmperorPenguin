@@ -10,7 +10,6 @@ public class LeaderPenguin : ItemCard
     [Space(10)]
     [Header("레벨업 정보")]
     public int Level;
-    [SerializeField] int MaxLevel;
     [SerializeField] int firstLevelUpMoney;
     [SerializeField] int LevelUpMoney;
     [SerializeField] int incrementMoney;
@@ -27,7 +26,7 @@ public class LeaderPenguin : ItemCard
     }
     protected override void Action()
     {
-        if (GameManager.Instance.Coin >= firstLevelUpMoney + LevelUpMoney * Level && Level != MaxLevel)
+        if (GameManager.Instance.Coin >= firstLevelUpMoney + LevelUpMoney * Level)
         {
             GameManager.Instance.Coin -= firstLevelUpMoney + LevelUpMoney * Level;
             GameManager.Instance.ClickCoinUp+= incrementMoney * Level;
