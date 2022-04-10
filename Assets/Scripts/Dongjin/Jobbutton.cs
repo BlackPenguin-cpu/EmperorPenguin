@@ -40,7 +40,7 @@ public class Jobbutton : ItemCard
             /*GameManager.Instance.ClickCoinUp += BuyincrementMoney;*/
             GameManager.Instance.secCoinup += BuyincrementMoney;
             Buy = true;
-
+            SoundManager.Instance.PlaySound("Buy", SoundType.SE, 1, 1);
             buttonText.text = "·¹º§¾÷" + "\n" + $"({GetThousandCommaText(firstLevelUpMoney + LevelUpMoney * Level)})";
             desc.text = "ÃÊ´ç Å‰µæ °ñµå" + "\n" + $"{GetThousandCommaText(BuyincrementMoney + incrementMoney * Level)} -> {GetThousandCommaText(BuyincrementMoney + incrementMoney * (Level + 1))}";
         }
@@ -54,6 +54,11 @@ public class Jobbutton : ItemCard
             buttonText.text = "·¹º§¾÷" + "\n" + $"({GetThousandCommaText(firstLevelUpMoney + LevelUpMoney * Level)})";
             desc.text = "ÃÊ´ç Å‰µæ °ñµå" + "\n" + $"{GetThousandCommaText(BuyincrementMoney + incrementMoney * Level)} -> {GetThousandCommaText(BuyincrementMoney + incrementMoney * (Level + 1))}";
             LevelText.text = $"Lv.{Level}";
+            SoundManager.Instance.PlaySound("Buy", SoundType.SE, 1, 1);
+        }
+        else if(GameManager.Instance.Coin <= firstLevelUpMoney + LevelUpMoney * Level|| GameManager.Instance.Coin <= BuyMoney)
+        {
+            SoundManager.Instance.PlaySound("Don_t_Buy", SoundType.SE, 1, 1);
         }
     }
     public string GetThousandCommaText(long data)

@@ -1139,7 +1139,7 @@ MonoBehaviour:
   On: {fileID: 21300000, guid: 5ab3ce55756dd9a409b111930bc023f6, type: 3}
   Off: {fileID: 21300000, guid: 49b74396fcafcc94d9af13ea89437604, type: 3}
   SulJungOn: 0
-  SoundManager: {fileID: 214985528}
+  SoundManager2: {fileID: 214985528}
   LeaderUI: {fileID: 368126447}
 --- !u!4 &201535986
 Transform:
@@ -7643,7 +7643,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7002588016702976753, guid: 88cb5ec1d5bc2ec43907c159b5a792af, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 88cb5ec1d5bc2ec43907c159b5a792af, type: 3}
 --- !u!1001 &1708807480
 PrefabInstance:

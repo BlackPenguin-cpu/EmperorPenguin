@@ -27,6 +27,11 @@ public class JasanText : ItemCard
             GameManager.Instance.ClickCoinUp += clickincrement;
             buttonText.text = "±¸¸ÅÇÔ";
             Buy = true;
+            SoundManager.Instance.PlaySound("Buy", SoundType.SE, 1, 1);
+        }
+        else if (GameManager.Instance.Coin <= BuyMoney)
+        {
+            SoundManager.Instance.PlaySound("Don_t_Buy", SoundType.SE, 1, 1);
         }
     }
     public string GetThousandCommaText(long data)

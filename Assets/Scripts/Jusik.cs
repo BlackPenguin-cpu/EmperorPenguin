@@ -78,7 +78,12 @@ public class Jusik : MonoBehaviour
         if (nowValue <= GameManager.Instance.Coin)
         {
             GameManager.Instance.Coin -= nowValue;
+            SoundManager.Instance.PlaySound("Buy", SoundType.SE, 1, 1);
             Count++;
+        }
+        else
+        {
+            SoundManager.Instance.PlaySound("Don_t_Buy", SoundType.SE, 1, 1);
         }
     }
     void SellAction()
@@ -87,6 +92,11 @@ public class Jusik : MonoBehaviour
         {
             Count--;
             GameManager.Instance.Coin += nowValue;
+            SoundManager.Instance.PlaySound("Buy", SoundType.SE, 1, 1);
+        }
+        else
+        {
+            SoundManager.Instance.PlaySound("Don_t_Buy", SoundType.SE, 1, 1);
         }
     }
     public string GetThousandCommaText(long data)

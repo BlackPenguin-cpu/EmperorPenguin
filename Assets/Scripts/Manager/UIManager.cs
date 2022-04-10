@@ -10,7 +10,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] Sprite On, Off;
     private bool UIOn;
     public bool SulJungOn;
-    [SerializeField] GameObject SoundManager;
+    [SerializeField] GameObject SoundManager2;
     [SerializeField] GameObject LeaderUI;
 
     private GameObject UIONOFF, UiButton, SulJungButton;
@@ -23,6 +23,7 @@ public class UIManager : MonoBehaviour
 
     public void OnOffUI()
     {
+        SoundManager.Instance.PlaySound("Button_Click", SoundType.SE, 1, 1);
         if (UIOn == false)
         {
             UIONOFF.GetComponent<Image>().sprite = On;
@@ -42,7 +43,8 @@ public class UIManager : MonoBehaviour
     }
     public void LeaderPenguin()
     {
-            LeaderUI.transform.DOLocalMove(new Vector3(-445,-410,0),0.3f).SetEase(Ease.OutCirc);
+        SoundManager.Instance.PlaySound("Button_Click", SoundType.SE, 1, 1);
+        LeaderUI.transform.DOLocalMove(new Vector3(-445,-410,0),0.3f).SetEase(Ease.OutCirc);
             UiButton.transform.DOLocalMove(new Vector3(-489, -600, 0), 0.3f).SetEase(Ease.OutCirc);
             UIONOFF.GetComponent<Image>().sprite = On;
             UIOn = true;
@@ -50,42 +52,49 @@ public class UIManager : MonoBehaviour
     }
     public void LeaderPenguinOff()
     {
-            LeaderUI.transform.DOLocalMove(new Vector3(-1700, -410, 0), 0.3f).SetEase(Ease.OutCirc);
+        SoundManager.Instance.PlaySound("Button_Click", SoundType.SE, 1, 1);
+        LeaderUI.transform.DOLocalMove(new Vector3(-1700, -410, 0), 0.3f).SetEase(Ease.OutCirc);
             UiButton.transform.DOLocalMove(new Vector3(-489, -371, 0), 0.3f).SetEase(Ease.OutCirc);
     }
     public void employee()
     {
+        SoundManager.Instance.PlaySound("Button_Click", SoundType.SE, 1, 1);
         ShopPage[0].transform.DOLocalMove(new Vector3(0,0,0),0.3f).SetEase(Ease.OutCirc);
     }
     public void Jasan()
     {
+        SoundManager.Instance.PlaySound("Button_Click", SoundType.SE, 1, 1);
         ShopPage[1].transform.DOLocalMove(new Vector3(0, 0, 0), 0.3f).SetEase(Ease.OutCirc);
     }
     public void Realestate()
     {
+        SoundManager.Instance.PlaySound("Button_Click", SoundType.SE, 1, 1);
         ShopPage[2].transform.DOLocalMove(new Vector3(0, 0, 0), 0.3f).SetEase(Ease.OutCirc);
     }
     public void Jusik()
     {
+        SoundManager.Instance.PlaySound("Button_Click", SoundType.SE, 1, 1);
         ShopPage[3].transform.DOLocalMove(new Vector3(0, 0, 0), 0.3f).SetEase(Ease.OutCirc);
     }
     public void ExitShopPage()
     {
-        for(int i =0;i<4;i++)
+        SoundManager.Instance.PlaySound("Button_Click", SoundType.SE, 1, 1);
+        for (int i =0;i<4;i++)
         {
             ShopPage[i].transform.DOLocalMove(new Vector3(0, -1000, 0), 0.3f).SetEase(Ease.OutCirc);
         }
     }
     public void SulJung()
     {
-        if(SulJungOn == false)
+        SoundManager.Instance.PlaySound("Button_Click", SoundType.SE, 1, 1);
+        if (SulJungOn == false)
         {
-            SoundManager.transform.GetChild(0).GetChild(0).transform.DOScale(Vector3.one,0.3f);
+            SoundManager2.transform.GetChild(0).GetChild(0).transform.DOScale(Vector3.one,0.3f);
             SulJungOn = true;
         }
         else
         {
-            SoundManager.transform.GetChild(0).GetChild(0).transform.DOScale(Vector3.zero, 0.3f);
+            SoundManager2.transform.GetChild(0).GetChild(0).transform.DOScale(Vector3.zero, 0.3f);
             SulJungOn = false;
         }
     }

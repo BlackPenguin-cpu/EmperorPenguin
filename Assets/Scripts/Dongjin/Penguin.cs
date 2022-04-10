@@ -19,8 +19,9 @@ public class Penguin : MonoBehaviour
     IEnumerator Chatting()
     {
         yield return new WaitForSeconds(ChatTime);
-        if(Random.Range(0,3)==0)
+        if (Random.Range(0,3)==0)
         {
+            SoundManager.Instance.PlaySound("Penguin", SoundType.SE, 15, 1);
             float timer = 1;
             GameObject RandomChat = Chat.transform.GetChild(Random.Range(0, Chat.transform.childCount)).gameObject;
             RandomChat.transform.position = transform.position + new Vector3(2.1f, 2.3f, 0);
@@ -43,7 +44,7 @@ public class Penguin : MonoBehaviour
     }
     IEnumerator AnimaSwap()
     {
-        yield return new WaitForSeconds(Random.Range(1,4));
+        yield return new WaitForSeconds(Random.Range(1,4)); 
         idx = idx * -1 + 1;
         GetComponent<SpriteRenderer>().sprite = Anima[idx];
         StartCoroutine("AnimaSwap");
