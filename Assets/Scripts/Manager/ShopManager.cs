@@ -4,22 +4,26 @@ using System.IO;
 using UnityEngine;
 
 
+[System.Serializable]
 public class estate
 {
     public bool isBuy;
     public string Name;
 }
+[System.Serializable]
 public class JusikData
 {
     public int Count;
     public long Value;
     public string Name;
 }
+[System.Serializable]
 public class JasanData
 {
     public bool isBuy;
     public string Name;
 }
+[System.Serializable]
 public class SaveData
 {
     public long Coin;
@@ -27,45 +31,51 @@ public class SaveData
     public long SecCoin;
 
     public int leaderPenguinLevel;
-    public int[] PenguinLevel = new int[3];
+    public int[] PenguinLevel = new int[5];
 
-    public estate[] dataSturctures = new estate[10];
+    public List<estate> dataSturctures = new List<estate>();
 
-    public JasanData[] jasanDatas = new JasanData[5];
+    public List<JasanData> jasanDatas = new List<JasanData>();
 
-    public JusikData[] Jusik = new JusikData[5];
+    public List<JusikData> Jusik = new List<JusikData>();
 
 }
 public class ShopManager : MonoBehaviour
 {
-
     private void Start()
     {
         string fileName = "SaveData";
         string Path = Application.persistentDataPath + "/" + fileName + ".Json";
+        FileInfo file = new FileInfo(Path);
+        if (file == null) return;
         string json = File.ReadAllText(Path);
 
-        SaveData saveData = JsonUtility.FromJson<SaveData>(Path);
-        if (saveData == null) return;
+        SaveData saveData = JsonUtility.FromJson<SaveData>(json);
         GameManager.Instance.Coin = saveData.Coin;
-        GameManager.Instance.ClickCoinUp = saveData.ClickCoin;
-        GameManager.Instance.secCoinup = saveData.SecCoin;
+        //GameManager.Instance.ClickCoinUp = saveData.ClickCoin;
+        //GameManager.Instance.secCoinup = saveData.SecCoin;
 
         FindObjectOfType<LeaderPenguin>().Level = saveData.leaderPenguinLevel;
 
         var penguins = FindObjectsOfType<Jobbutton>();
         foreach (var penguin in penguins)
+        {
             penguin.Level = saveData.PenguinLevel[penguin.Penguinidx];
+            if (penguin.Level > 0)
+            {
+                penguin.Buy = true;
+            }
+        }
 
         var Structures = FindObjectsOfType<Realestate>();
         int count = 0;
         foreach (var Structure in Structures)
         {
-            Structure.ItemName = saveData.dataSturctures[count].Name;
-            Structure.Buy = saveData.dataSturctures[count].isBuy;
+            estate obj = saveData.dataSturctures.Find(x => x.Name == Structure.ItemName);
+            Structure.ItemName = obj.Name;
+            Structure.Buy = obj.isBuy;
             count++;
         }
-
         count = 0;
         var Jasans = FindObjectsOfType<JasanText>();
         foreach (JasanText jasan in Jasans)
@@ -89,6 +99,10 @@ public class ShopManager : MonoBehaviour
     {
         SaveData saveData = new SaveData();
 
+        saveData.ClickCoin = GameManager.Instance.ClickCoinUp;
+        saveData.Coin = GameManager.Instance.Coin;
+        saveData.SecCoin = GameManager.Instance.secCoinup;
+
         saveData.leaderPenguinLevel = FindObjectOfType<LeaderPenguin>().Level;
 
         var penguins = FindObjectsOfType<Jobbutton>();
@@ -96,31 +110,33 @@ public class ShopManager : MonoBehaviour
             saveData.PenguinLevel[penguin.Penguinidx] = penguin.Level;
 
         var Structures = FindObjectsOfType<Realestate>();
-        int count = 0;
         foreach (var Structure in Structures)
         {
-            saveData.dataSturctures[count].Name = Structure.ItemName;
-            saveData.dataSturctures[count].isBuy = Structure.Buy;
-            count++;
+            estate estate = new estate();
+            estate.Name = Structure.ItemName;
+            estate.isBuy = Structure.Buy;
+            saveData.dataSturctures.Add(estate);
         }
 
-        count = 0;
         var Jasans = FindObjectsOfType<JasanText>();
         foreach (JasanText jasan in Jasans)
         {
-            saveData.jasanDatas[count].Name = jasan.ItemName;
-            saveData.jasanDatas[count].isBuy = jasan.Buy;
-            count++;
+            JasanData jasann = new JasanData();
+            jasann.Name = jasan.ItemName;
+            jasann.isBuy = jasan.Buy;
+
+            saveData.jasanDatas.Add(jasann);
         }
 
         var Jusiks = FindObjectsOfType<Jusik>();
-        count = 0;
         foreach (var juiisk in Jusiks)
         {
-            saveData.Jusik[count].Name = juiisk.ItemName;
-            saveData.Jusik[count].Value = juiisk.nowValue;
-            saveData.Jusik[count].Count = juiisk.Count;
-            count++;
+            JusikData data = new JusikData();
+            data.Name = juiisk.ItemName;
+            data.Value = juiisk.nowValue;
+            data.Count = juiisk.Count;
+
+            saveData.Jusik.Add(data);
         }
 
         string json = JsonUtility.ToJson(saveData);

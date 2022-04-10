@@ -7,7 +7,7 @@ public class Jobbutton : ItemCard
 {
     [Header("구매 정보")]
     public int Penguinidx;
-    [SerializeField] bool Buy;
+    public bool Buy;
     [SerializeField] int BuyincrementMoney;
     [Space(10)]
     [Header("레벨업 정보")]
