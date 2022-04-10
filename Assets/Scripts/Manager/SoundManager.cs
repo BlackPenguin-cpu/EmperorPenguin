@@ -38,17 +38,21 @@ public class SoundManager : Singleton<SoundManager>
         if (ClipType == SoundType.BGM)
         {
             AudioSources[SoundType.BGM].clip = sounds[clipName];
-            AudioSources[SoundType.BGM].volume = Volume * Volumes[SoundType.BGM];
+            AudioSources[SoundType.BGM].volume *= Volume ;
             AudioSources[SoundType.BGM].Play();
         }
         else
         {
-            AudioSources[ClipType].volume = Volumes[ClipType];
             AudioSources[ClipType].pitch = Pitch;
             AudioSources[ClipType].PlayOneShot(sounds[clipName], Volume);
         }
     }
+    private void Update()
+    {
+        AudioSources[SoundType.BGM].volume =  Volumes[SoundType.BGM];
+        AudioSources[SoundType.SE].volume =  Volumes[SoundType.BGM];
 
+    }
     public void BgmSound()
     {
 
