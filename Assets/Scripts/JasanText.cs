@@ -7,8 +7,8 @@ public class JasanText : ItemCard
 {
     [SerializeField] long SellMoney;
     [Header("구매 정보")]
-    [SerializeField] int Jasanidx;
-    [SerializeField] bool Buy;
+    public int Jasanidx;
+    public bool Buy;
     [SerializeField] int secincrement,clickincrement;
 
     protected override void Start()

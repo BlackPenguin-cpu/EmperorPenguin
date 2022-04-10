@@ -15,7 +15,7 @@ public class Jusik : MonoBehaviour
     float curTime = 60;
     [SerializeField] float resetTime = 60;
     public int Count;
-    [SerializeField] long nowValue;
+    public long nowValue;
     [SerializeField] range upValue;
     [SerializeField] range downValue;
     [SerializeField] float upChance;
