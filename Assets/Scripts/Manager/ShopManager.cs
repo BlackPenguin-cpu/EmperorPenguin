@@ -3,43 +3,54 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-class estate
+public class estate
 {
-    bool isBuy;
-    string Name;
+    public bool isBuy;
+    public string Name;
 }
-class JusikData
+public class JusikData
 {
-    int Count;
-    int Value;
+    public int Count;
+    public int Value;
+}
+
+public class SaveData
+{
+    public long Coin;
+    public long ClickCoin;
+    public long SecCoin;
+
+    public int leaderPenguinLevel;
+    public int Penguin1Level;
+    public int Penguin2Level;
+    public int Penguin3Level;
+
+    public estate roofTop;
+    public estate halfUnder;
+    public estate officetell;
+    public estate multiLiveHouse;
+    public estate SingleLiveHouse;
+    public estate apart50;
+    public estate Buliding10;
+    public estate Buliding30;
+    public estate Buliding50;
+    public estate Hotel;
+
+    public JusikData Menity;
+    public JusikData Youtube;
+    public JusikData Taslo;
+    public JusikData Nuntendo;
+    public JusikData bitCoin;
 }
 public class ShopManager : MonoBehaviour
 {
-    int leaderPenguinLevel;
-    int Penguin1Level;
-    int Penguin2Level;
-    int Penguin3Level;
-
-    estate roofTop;
-    estate halfUnder;
-    estate officetell;
-    estate multiLiveHouse;
-    estate SingleLiveHouse;
-    estate apart50;
-    estate Buliding10;
-    estate Buliding30;
-    estate Buliding50;
-    estate Hotel;
-
-    JusikData Menity;
-    JusikData Youtube;
-    JusikData Taslo;
-    JusikData Nuntendo;
-    JusikData Coin;
 
     private void Start()
     {
-        
+        SaveData saveData = new SaveData();
+
+        saveData.leaderPenguinLevel = FindObjectOfType<LeaderPenguin>().Level;
+        saveData.
     }
     private void OnApplicationQuit()
     {

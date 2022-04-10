@@ -9,7 +9,7 @@ public class LeaderPenguin : ItemCard
     [SerializeField] int firstincrementMoney;
     [Space(10)]
     [Header("레벨업 정보")]
-    [SerializeField] int Level;
+    public int Level;
     [SerializeField] int MaxLevel;
     [SerializeField] int firstLevelUpMoney;
     [SerializeField] int LevelUpMoney;
