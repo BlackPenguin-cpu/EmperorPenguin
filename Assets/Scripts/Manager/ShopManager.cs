@@ -62,37 +62,31 @@ public class ShopManager : MonoBehaviour
         {
             penguin.Level = saveData.PenguinLevel[penguin.Penguinidx];
             if (penguin.Level > 0)
-            {
                 penguin.Buy = true;
-            }
         }
 
         var Structures = FindObjectsOfType<Realestate>();
-        int count = 0;
         foreach (var Structure in Structures)
         {
             estate obj = saveData.dataSturctures.Find(x => x.Name == Structure.ItemName);
             Structure.ItemName = obj.Name;
             Structure.Buy = obj.isBuy;
-            count++;
         }
-        count = 0;
         var Jasans = FindObjectsOfType<JasanText>();
         foreach (JasanText jasan in Jasans)
         {
-            jasan.ItemName = saveData.jasanDatas[count].Name;
-            jasan.Buy = saveData.jasanDatas[count].isBuy;
-            count++;
+            JasanData jasanData = saveData.jasanDatas.Find(x => x.Name == jasan.ItemName);
+            jasan.ItemName = jasanData.Name;
+            jasan.Buy = jasanData.isBuy;
         }
 
         var Jusiks = FindObjectsOfType<Jusik>();
-        count = 0;
         foreach (var juiisk in Jusiks)
         {
-            juiisk.ItemName = saveData.Jusik[count].Name;
-            juiisk.nowValue = saveData.Jusik[count].Value;
-            juiisk.Count = saveData.Jusik[count].Count;
-            count++;
+            JusikData jusikdata = saveData.Jusik.Find(x => x.Name == juiisk.ItemName);
+            juiisk.ItemName = jusikdata.Name;
+            juiisk.nowValue = jusikdata.Value;
+            juiisk.Count = jusikdata.Count;
         }
     }
     private void OnApplicationQuit()
