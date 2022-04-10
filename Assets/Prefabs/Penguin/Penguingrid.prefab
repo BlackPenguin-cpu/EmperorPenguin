@@ -28,9 +28,9 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1549963847501658849}
-  - {fileID: 1549963847628833065}
-  - {fileID: 1549963846790284413}
+  - {fileID: 7925051914856568724}
+  - {fileID: 365729848541897837}
+  - {fileID: 5884019379382411560}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -160,9 +160,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6324c4888e33f454aa3f1e655f269103, type: 3}
---- !u!224 &1549963847501658849 stripped
+--- !u!224 &7925051914856568724 stripped
 RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4841946024602454444, guid: 6324c4888e33f454aa3f1e655f269103, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4272771537994376409, guid: 6324c4888e33f454aa3f1e655f269103, type: 3}
   m_PrefabInstance: {fileID: 6246668232217064269}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8080754153541319467
@@ -172,6 +172,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3819210671157203678}
     m_Modifications:
+    - target: {fileID: 2417491154784082435, guid: 8d92e77705b2a4942916b88e220fed00, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3150362404668816838, guid: 8d92e77705b2a4942916b88e220fed00, type: 3}
       propertyPath: m_Name
       value: GentooPenguin
@@ -262,9 +266,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d92e77705b2a4942916b88e220fed00, type: 3}
---- !u!224 &1549963846790284413 stripped
+--- !u!224 &5884019379382411560 stripped
 RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7324551734497754966, guid: 8d92e77705b2a4942916b88e220fed00, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2417491154784082435, guid: 8d92e77705b2a4942916b88e220fed00, type: 3}
   m_PrefabInstance: {fileID: 8080754153541319467}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8360796663643061447
@@ -362,10 +366,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8148367529743472810, guid: 43a4813bf3cbf914fa2b9e8d698962a1, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43a4813bf3cbf914fa2b9e8d698962a1, type: 3}
---- !u!224 &1549963847628833065 stripped
+--- !u!224 &365729848541897837 stripped
 RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7027048825095880174, guid: 43a4813bf3cbf914fa2b9e8d698962a1, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8148367529743472810, guid: 43a4813bf3cbf914fa2b9e8d698962a1, type: 3}
   m_PrefabInstance: {fileID: 8360796663643061447}
   m_PrefabAsset: {fileID: 0}
