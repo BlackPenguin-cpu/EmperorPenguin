@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     private bool UIOn;
     public bool SulJungOn;
     [SerializeField] GameObject SoundManager2;
+    [SerializeField] GameObject soundManagerScreen;
     [SerializeField] GameObject LeaderUI;
 
     private GameObject UIONOFF, UiButton, SulJungButton;
@@ -89,12 +90,14 @@ public class UIManager : MonoBehaviour
         SoundManager.Instance.PlaySound("Button_Click", SoundType.SE, 1, 1);
         if (SulJungOn == false)
         {
-            SoundManager2.transform.GetChild(0).GetChild(0).transform.DOScale(Vector3.one,0.3f);
+            SoundManager2.transform.DOScale(Vector3.one,0.3f);
+            soundManagerScreen.transform.DOScale(Vector3.one, 0.3f);
             SulJungOn = true;
         }
         else
         {
-            SoundManager2.transform.GetChild(0).GetChild(0).transform.DOScale(Vector3.zero, 0.3f);
+            SoundManager2.transform.transform.DOScale(Vector3.zero, 0.3f);
+            soundManagerScreen.transform.transform.DOScale(Vector3.zero, 0.3f);
             SulJungOn = false;
         }
     }
