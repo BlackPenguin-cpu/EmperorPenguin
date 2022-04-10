@@ -33,6 +33,11 @@ public class Jobbutton : ItemCard
             buttonText.text = "·¹º§¾÷" + "\n" + $"({GetThousandCommaText(firstLevelUpMoney + LevelUpMoney * Level)})";
             desc.text = "ÃÊ´ç Å‰µæ °ñµå" + "\n" + $"{GetThousandCommaText(BuyincrementMoney + incrementMoney * Level)} -> {GetThousandCommaText(BuyincrementMoney + incrementMoney * (Level + 1))}";
             LevelText.text = $"Lv.{Level}";
+            for (int i = 0; i < 4; i++)
+            {
+                if (GameObject.Find("Penguins").transform.GetChild(i).GetComponent<Penguin>().Penguinidx == Penguinidx)
+                    GameObject.Find("Penguins").transform.GetChild(i).gameObject.SetActive(true);
+            }
         }
     }
     protected override void Action()

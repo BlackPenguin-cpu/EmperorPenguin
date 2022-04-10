@@ -23,6 +23,7 @@ public class JasanText : ItemCard
         {
             buttonText.text = "±∏∏≈«‘";
             desc.text = $"√ ¥Á ≈âµÊ ∞ÒµÂ / ≈¨∏Ø ¥Á ≈âµÊ ∞ÒµÂ\n{secincrement}/{clickincrement}";
+            GameObject.Find("Jasans").transform.GetChild(Jasanidx).gameObject.SetActive(true);
         }
     }
     protected override void Action()
