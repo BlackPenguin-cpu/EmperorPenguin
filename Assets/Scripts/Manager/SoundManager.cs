@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 public enum SoundType
 {
     SE,
@@ -12,6 +13,9 @@ public class SoundManager : Singleton<SoundManager>
     Dictionary<string, AudioClip> sounds = new Dictionary<string, AudioClip>();
     Dictionary<SoundType, float> Volumes = new Dictionary<SoundType, float>() { { SoundType.SE, 1 }, { SoundType.BGM, 1 } };
     Dictionary<SoundType, AudioSource> AudioSources = new Dictionary<SoundType, AudioSource>();
+
+    [SerializeField] Image BgmButton;
+    [SerializeField] Image SeButton;
 
     protected override void Awake()
     {
@@ -42,6 +46,34 @@ public class SoundManager : Singleton<SoundManager>
             AudioSources[ClipType].volume = Volumes[ClipType];
             AudioSources[ClipType].pitch = Pitch;
             AudioSources[ClipType].PlayOneShot(sounds[clipName], Volume);
+        }
+    }
+
+    public void BgmSound()
+    {
+
+        if (Volumes[SoundType.BGM] == 1)
+        {
+            BgmButton.sprite = Resources.Load<Sprite>("UI/back_music_2");
+            Volumes[SoundType.BGM] = 0;
+        }
+        else
+        {
+            BgmButton.sprite = Resources.Load<Sprite>("UI/back_music");
+            Volumes[SoundType.BGM] = 1;
+        }
+    }
+    public void SeSound()
+    {
+        if (Volumes[SoundType.SE] == 1)
+        {
+            SeButton.sprite = Resources.Load<Sprite>("UI/music_2");
+            Volumes[SoundType.SE] = 0;
+        }
+        else
+        {
+            SeButton.sprite = Resources.Load<Sprite>("UI/music_1");
+            Volumes[SoundType.SE] = 1;
         }
     }
 }
