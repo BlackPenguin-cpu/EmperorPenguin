@@ -12,7 +12,7 @@ public class JaGum : MonoBehaviour
     }
     private void Update()
     {
-        textMeshProUGUI.text = "ÀÚ±Ý : " + GetThousandCommaText(GameManager.Instance.Coin) + "\\";
+        textMeshProUGUI.text = "    : " + GetThousandCommaText(GameManager.Instance.Coin) + "\\";
     }
     public string GetThousandCommaText(long data)
     {

@@ -21,12 +21,12 @@ public class Jobbutton : ItemCard
     protected override void Start()
     {
         base.Start();
-        if(Buy == false)
-        {
- buttonText.text = "±¸¸Å" + "\n" + $"({GetThousandCommaText(BuyMoney)})";
         LevelText = gameObject.transform.Find("Level").GetComponent<TextMeshProUGUI>();
-        buttonText.text = "°í¿ëÇÏ±â" + "\n" + $"({GetThousandCommaText(BuyMoney)})";
-        desc.text = "ÃÊ´ç Å‰µæ °ñµå" + "\n" + $"{GetThousandCommaText(BuyincrementMoney + incrementMoney * Level)}";
+        if (Buy == false)
+        {
+            buttonText.text = "±¸¸Å" + "\n" + $"({GetThousandCommaText(BuyMoney)})";
+            buttonText.text = "°í¿ëÇÏ±â" + "\n" + $"({GetThousandCommaText(BuyMoney)})";
+            desc.text = "ÃÊ´ç Å‰µæ °ñµå" + "\n" + $"{GetThousandCommaText(BuyincrementMoney + incrementMoney * Level)}";
         }
         else
         {
@@ -39,9 +39,9 @@ public class Jobbutton : ItemCard
     {
         if (GameManager.Instance.Coin >= BuyMoney && Buy == false)
         {
-            for(int i = 0;i<4;i++)
+            for (int i = 0; i < 4; i++)
             {
-                if(GameObject.Find("Penguins").transform.GetChild(i).GetComponent<Penguin>().Penguinidx == Penguinidx)
+                if (GameObject.Find("Penguins").transform.GetChild(i).GetComponent<Penguin>().Penguinidx == Penguinidx)
                     GameObject.Find("Penguins").transform.GetChild(i).gameObject.SetActive(true);
             }
 
@@ -59,10 +59,10 @@ public class Jobbutton : ItemCard
             Level++;
             buttonText.text = "·¹º§¾÷" + "\n" + $"({GetThousandCommaText(firstLevelUpMoney + LevelUpMoney * Level)})";
             desc.text = "ÃÊ´ç Å‰µæ °ñµå" + "\n" + $"{GetThousandCommaText(BuyincrementMoney + incrementMoney * Level)} -> {GetThousandCommaText(BuyincrementMoney + incrementMoney * (Level + 1))}";
-            LevelText.text = $"Lv.{Level+1}";
+            LevelText.text = $"Lv.{Level + 1}";
             SoundManager.Instance.PlaySound("Buy", SoundType.SE, 1, 1);
         }
-        else if(GameManager.Instance.Coin <= firstLevelUpMoney + LevelUpMoney * Level|| GameManager.Instance.Coin <= BuyMoney)
+        else if (GameManager.Instance.Coin <= firstLevelUpMoney + LevelUpMoney * Level || GameManager.Instance.Coin <= BuyMoney)
         {
             SoundManager.Instance.PlaySound("Don_t_Buy", SoundType.SE, 1, 1);
         }

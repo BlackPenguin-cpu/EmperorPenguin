@@ -42,7 +42,7 @@ public class SaveData
 }
 public class ShopManager : MonoBehaviour
 {
-    private void Start()
+    private void Awake()
     {
         string fileName = "SaveData";
         string Path = Application.persistentDataPath + "/" + fileName + ".Json";
@@ -52,8 +52,8 @@ public class ShopManager : MonoBehaviour
 
         SaveData saveData = JsonUtility.FromJson<SaveData>(json);
         GameManager.Instance.Coin = saveData.Coin;
+        GameManager.Instance.secCoinup = saveData.SecCoin;
         //GameManager.Instance.ClickCoinUp = saveData.ClickCoin;
-        //GameManager.Instance.secCoinup = saveData.SecCoin;
 
         FindObjectOfType<LeaderPenguin>().Level = saveData.leaderPenguinLevel;
 
