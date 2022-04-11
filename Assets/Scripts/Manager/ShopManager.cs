@@ -45,8 +45,11 @@ public class ShopManager : MonoBehaviour
 {
     private void Awake()
     {
+        if (!Directory.Exists(Application.persistentDataPath + "/Save"))
+            Directory.CreateDirectory(Application.persistentDataPath + "/Save");
+
         string fileName = "SaveData";
-        string Path = Application.persistentDataPath + "/" + fileName + ".Json";
+        string Path = Application.persistentDataPath + "/Save/" + fileName + ".Json";
         FileInfo file = new FileInfo(Path);
         if (file == null) return;
         string json = File.ReadAllText(Path);
@@ -136,9 +139,15 @@ public class ShopManager : MonoBehaviour
             saveData.Jusik.Add(data);
         }
 
+        if (!Directory.Exists(Application.persistentDataPath + "/Save"))
+            Directory.CreateDirectory(Application.persistentDataPath + "/Save");
+
+
         string json = JsonUtility.ToJson(saveData);
         string fileName = "SaveData";
-        string Path = Application.persistentDataPath + "/" + fileName + ".Json";
-        File.WriteAllText(Path, json);
+        FileStream fs = new FileStream(Application.persistentDataPath + "/Save" + fileName + ".Json", FileMode.Create, FileAccess.Write);
+        fs.Close();
+        string Path = Application.dataPath + "/Save/" + fileName + ".Json";
+        File.WriteAllText(Path, fs.ToString());
     }
 }

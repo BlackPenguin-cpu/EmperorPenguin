@@ -29,7 +29,7 @@ public class LeaderPenguin : ItemCard
         if (GameManager.Instance.Coin >= firstLevelUpMoney + LevelUpMoney * Level)
         {
             GameManager.Instance.Coin -= firstLevelUpMoney + LevelUpMoney * Level;
-            GameManager.Instance.ClickCoinUp+= incrementMoney * Level;
+            GameManager.Instance.ClickCoinUp = firstincrementMoney + incrementMoney * Level;
             Level++;
             LevelText.text = $"Lv.{Level}";
             buttonText.text = $"{firstLevelUpMoney + LevelUpMoney * Level}¿ø";
