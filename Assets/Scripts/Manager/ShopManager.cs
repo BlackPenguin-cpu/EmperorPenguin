@@ -49,7 +49,8 @@ public class ShopManager : MonoBehaviour
         string Path = Application.persistentDataPath + "/" + fileName + ".Json";
         FileInfo file = new FileInfo(Path);
         if (file == null) return;
-        string json = File.ReadAllText(Path);
+        //string json = File.ReadAllText(Path);
+        string json = PlayerPrefs.GetString("SaveData");
 
         SaveData saveData = JsonUtility.FromJson<SaveData>(json);
         GameManager.Instance.Coin = saveData.Coin;
@@ -139,6 +140,7 @@ public class ShopManager : MonoBehaviour
         string json = JsonUtility.ToJson(saveData);
         string fileName = "SaveData";
         string Path = Application.persistentDataPath + "/" + fileName + ".Json";
-        File.WriteAllText(Path, json);
+        PlayerPrefs.SetString("SaveData", json);
+        //File.WriteAllText(Path, json);
     }
 }

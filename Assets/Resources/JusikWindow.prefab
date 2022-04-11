@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 7491535124834078671}
   - component: {fileID: 9075521242242163268}
   - component: {fileID: 1066698772790082624}
-  - component: {fileID: 3618110314013606185}
   - component: {fileID: 6069333900523648982}
   - component: {fileID: 1853798291385313306}
   m_Layer: 5
@@ -124,19 +123,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &3618110314013606185
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1624762723439705662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 942d2f0cbd05c664ca75bae3f85eda4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UITextMeshPro: {fileID: 9072274914664845505}
 --- !u!114 &6069333900523648982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -341,7 +327,6 @@ GameObject:
   - component: {fileID: 6162138056723235401}
   - component: {fileID: 2842063225033181587}
   - component: {fileID: 8045937152540452127}
-  - component: {fileID: 4418750119078422188}
   - component: {fileID: 1748384359342312001}
   - component: {fileID: 1362605222530706957}
   m_Layer: 5
@@ -453,19 +438,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &4418750119078422188
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1791209500061607610}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 942d2f0cbd05c664ca75bae3f85eda4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UITextMeshPro: {fileID: 2811479897275200327}
 --- !u!114 &1748384359342312001
 MonoBehaviour:
   m_ObjectHideFlags: 0
