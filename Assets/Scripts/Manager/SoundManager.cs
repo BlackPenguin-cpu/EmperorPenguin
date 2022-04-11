@@ -50,7 +50,7 @@ public class SoundManager : Singleton<SoundManager>
     private void Update()
     {
         AudioSources[SoundType.BGM].volume =  Volumes[SoundType.BGM];
-        AudioSources[SoundType.SE].volume =  Volumes[SoundType.BGM];
+        AudioSources[SoundType.SE].volume =  Volumes[SoundType.SE];
 
     }
     public void BgmSound()

@@ -7,7 +7,7 @@ public class Realestate : ItemCard
 
     [Header("구매 정보")]
     public bool Buy;
-    private long incrementMoney;
+    [SerializeField] long incrementMoney;
     public long realMoney;
     private float timer;
     protected override void Start()
@@ -27,7 +27,7 @@ public class Realestate : ItemCard
     {
         if (Buy == true)
             timer += Time.deltaTime;
-        desc.text = "가격" + "\n" + GetThousandCommaText(BuyMoney + incrementMoney * (int)timer) + $"(+{GetThousandCommaText(incrementMoney)}s)";
+        desc.text = "가격" + "\n" + GetThousandCommaText(realMoney) + $"(+{GetThousandCommaText(incrementMoney)}s)";
         realMoney = BuyMoney + incrementMoney * (int)timer;
     }
     protected override void Action()
@@ -41,7 +41,7 @@ public class Realestate : ItemCard
         }
         else if (Buy == true)
         {
-            GameManager.Instance.Coin += BuyMoney + incrementMoney * (int)timer;
+            GameManager.Instance.Coin += realMoney;
             buttonText.text = "구매";
             SoundManager.Instance.PlaySound("Buy", SoundType.SE, 1, 1);
             timer = 0;

@@ -41,12 +41,12 @@ public class Jusik : MonoBehaviour
         if (isSellClicking && clickDuration > 1)
         {
             SellAction();
-            clickDuration -= 0.05f;
+            clickDuration -= 0.01f;
         }
         if (isBuyClicking && clickDuration > 1)
         {
             BuyAction();
-            clickDuration -= 0.05f;
+            clickDuration -= 0.01f;
         }
         desc.text = $"{GetThousandCommaText(nowValue)}원 \n {Count}주 소유";
         if (curTime >= resetTime)
