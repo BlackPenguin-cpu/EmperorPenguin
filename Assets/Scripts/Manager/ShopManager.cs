@@ -43,17 +43,17 @@ public class SaveData
 }
 public class ShopManager : MonoBehaviour
 {
+    string fileName = "SaveData";
     private void Awake()
     {
-        if (!Directory.Exists(Application.persistentDataPath + "/Save"))
-            Directory.CreateDirectory(Application.persistentDataPath + "/Save");
+        if (!Directory.Exists(Application.persistentDataPath))
+            Directory.CreateDirectory(Application.persistentDataPath);
 
-        string fileName = "SaveData";
-        string Path = Application.persistentDataPath + "/Save/" + fileName + ".Json";
-        FileInfo file = new FileInfo(Path);
+        string path = Application.persistentDataPath + "/" + fileName + ".Json";
+        FileInfo file = new FileInfo(path);
         if (file == null) return;
-        //string json = File.ReadAllText(Path);
-        string json = PlayerPrefs.GetString("SaveData");
+        string json = File.ReadAllText(path);
+        //string json = PlayerPrefs.GetString("SaveData");
 
         SaveData saveData = JsonUtility.FromJson<SaveData>(json);
         GameManager.Instance.Coin = saveData.Coin;
@@ -95,7 +95,7 @@ public class ShopManager : MonoBehaviour
             juiisk.Count = jusikdata.Count;
         }
     }
-    private void OnApplicationQuit()
+    private void FixedUpdate()
     {
         SaveData saveData = new SaveData();
 
@@ -145,9 +145,11 @@ public class ShopManager : MonoBehaviour
 
 
         string json = JsonUtility.ToJson(saveData);
-        string fileName = "SaveData";
-        string Path = Application.persistentDataPath + "/" + fileName + ".Json";
-        PlayerPrefs.SetString("SaveData", json);
-        //File.WriteAllText(Path, json);
+        string path = Application.persistentDataPath + "/" + fileName + ".Json";
+        File.WriteAllText(path, json);
+    }
+    private void OnApplicationQuit()
+    {
+
     }
 }
