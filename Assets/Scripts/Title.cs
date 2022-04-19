@@ -5,13 +5,12 @@ using UnityEngine.UI;
 
 public class Title : MonoBehaviour
 {
-    [SerializeField] Text ClicktoStart;
-    void Start()
+    public static Title Instance;
+    private void Awake()
     {
-
+        Instance = this;
     }
-
-    // Update is called once per frame
+    [SerializeField] Text ClicktoStart;
     void Update()
     {
         ClicktoStart.color = new Color(0, 0, 0, Mathf.Abs(Mathf.Cos(Time.time)));

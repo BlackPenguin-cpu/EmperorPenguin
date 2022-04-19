@@ -14,6 +14,9 @@ public class tilescript : MonoBehaviour
     [SerializeField] GameObject StartShowObject;
     [SerializeField] GameObject ExitButton;
     private Color color;
+
+
+    [SerializeField] LoadingManager Loading;
     private void Start()
     {
         titleAudio.clip = Resources.Load<AudioClip>("Sounds/Title");
@@ -64,8 +67,7 @@ public class tilescript : MonoBehaviour
         ExitButton.transform.DOLocalMove(new Vector3(850, 620, 0), 1);
         titletext.SetActive(false);
         yield return new WaitForSeconds(3f);
-        SceneManager.LoadScene(1);
-        yield return null;
+        Loading.Loading();
     }
     public void ExitButtons()
     {
