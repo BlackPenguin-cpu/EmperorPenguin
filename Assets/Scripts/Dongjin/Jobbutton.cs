@@ -70,7 +70,7 @@ public class Jobbutton : ItemCard
         else if (GameManager.Instance.Coin >= firstLevelUpMoney + LevelUpMoney * Level && Level != MaxLevel)
         {
                 GameManager.Instance.Coin -= firstLevelUpMoney + LevelUpMoney * Level;
-                GameManager.Instance.secCoinup += incrementMoney * Level;
+                GameManager.Instance.secCoinup += incrementMoney;
                 Level++;
                 if (Level == MaxLevel)
                 {

@@ -15,9 +15,15 @@ public class LeaderPenguin : ItemCard
     [SerializeField] int incrementMoney;
 
     private TextMeshProUGUI LevelText;
+
+    float clickDuration;
+    bool isClicking;
+    float IconomeStack = 1;
     protected override void Start()
     {
         base.Start();
+        if (Level == 0) Level = 1;
+
         LevelText = gameObject.transform.Find("Level").GetComponent<TextMeshProUGUI>();
         LevelText.text = $"Lv.{Level + 1}";
         buttonText.text = $"{firstLevelUpMoney + LevelUpMoney * Level}¿ø";
@@ -41,6 +47,32 @@ public class LeaderPenguin : ItemCard
             SoundManager.Instance.PlaySound("Don_t_Buy", SoundType.SE, 1, 1);
         }
     }
+
+    private void Update()
+    {
+        if (isClicking)
+        {
+            clickDuration += Time.deltaTime;
+            if (clickDuration > 1)
+            {
+                for (int i = 0; i < IconomeStack; i++)
+                    Action();
+                clickDuration -= 0.01f;
+                IconomeStack += 0.2f;
+            }
+        }
+    }
+    public void onClick()
+    {
+        isClicking = true;
+    }
+    public void onClickUp()
+    {
+        isClicking = false;
+        IconomeStack = 1;
+        clickDuration = 0;
+    }
+
     public string GetThousandCommaText(long data)
     {
         return string.Format("{0:#,###}", data);

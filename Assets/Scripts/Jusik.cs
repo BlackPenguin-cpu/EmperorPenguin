@@ -31,6 +31,7 @@ public class Jusik : MonoBehaviour
     float clickDuration;
     bool isBuyClicking;
     bool isSellClicking;
+    float IconomeStack = 1;
     private void Update()
     {
         curTime += Time.deltaTime;
@@ -40,13 +41,17 @@ public class Jusik : MonoBehaviour
         }
         if (isSellClicking && clickDuration > 1)
         {
-            SellAction();
+            for (int i = 0; i < IconomeStack; i++)
+                SellAction();
             clickDuration -= 0.01f;
+            IconomeStack += 0.2f;
         }
         if (isBuyClicking && clickDuration > 1)
         {
-            BuyAction();
+            for (int i = 0; i < IconomeStack; i++)
+                BuyAction();
             clickDuration -= 0.01f;
+            IconomeStack += 0.2f;
         }
         desc.text = $"{GetThousandCommaText(nowValue)}원 \n {Count}주 소유";
         if (curTime >= resetTime)
@@ -136,6 +141,7 @@ public class Jusik : MonoBehaviour
     }
     public void ClickUp()
     {
+        IconomeStack = 1;
         isBuyClicking = false;
         isSellClicking = false;
         clickDuration = 0;

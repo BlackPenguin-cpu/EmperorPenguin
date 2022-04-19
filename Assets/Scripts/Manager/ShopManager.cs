@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using UnityEngine;
 
 
@@ -46,15 +47,18 @@ public class ShopManager : MonoBehaviour
     string fileName = "SaveData";
     private void Awake()
     {
+
+        if (!PlayerPrefs.HasKey("onSave")) return;
+
         if (!Directory.Exists(Application.persistentDataPath))
             Directory.CreateDirectory(Application.persistentDataPath);
 
         string path = Application.persistentDataPath + "/" + fileName + ".Json";
         FileInfo file = new FileInfo(path);
         if (file == null) return;
-        string json = File.ReadAllText(path);
-        //string json = PlayerPrefs.GetString("SaveData");
-
+        //string json = File.ReadAllText(path);
+        string json = PlayerPrefs.GetString("SaveData");
+        if(json == null) return;
         SaveData saveData = JsonUtility.FromJson<SaveData>(json);
         GameManager.Instance.Coin = saveData.Coin;
         GameManager.Instance.secCoinup = saveData.SecCoin;
@@ -95,7 +99,7 @@ public class ShopManager : MonoBehaviour
             juiisk.Count = jusikdata.Count;
         }
     }
-    private void FixedUpdate()
+    private void Update()
     {
         SaveData saveData = new SaveData();
 
@@ -146,10 +150,10 @@ public class ShopManager : MonoBehaviour
 
         string json = JsonUtility.ToJson(saveData);
         string path = Application.persistentDataPath + "/" + fileName + ".Json";
-        File.WriteAllText(path, json);
-    }
-    private void OnApplicationQuit()
-    {
+        //File.WriteAllText(path, json);
 
+        PlayerPrefs.SetString("SaveData", json);
+        PlayerPrefs.SetInt("onSave",1);
+        PlayerPrefs.Save();
     }
 }
