@@ -62,11 +62,11 @@ public class tilescript : MonoBehaviour
     IEnumerator StartShow()
     {
         CreatorUI.transform.DOLocalMove(Vector3.up * 1000, 1).SetEase(Ease.OutSine);
-        StartShowObject.transform.DOLocalMove(Vector3.up * 2900, 3).SetEase(Ease.InBack);
+        StartShowObject.transform.DOLocalMove(Vector3.up * 4000, 3).SetEase(Ease.InBack);
         CreatorButtons.transform.DOLocalMove(new Vector3(680, 620, 0), 1);
         ExitButton.transform.DOLocalMove(new Vector3(850, 620, 0), 1);
         titletext.SetActive(false);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1.5f);
         Loading.Loading();
     }
     public void ExitButtons()

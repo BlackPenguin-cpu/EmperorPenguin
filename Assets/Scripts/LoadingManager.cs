@@ -15,30 +15,19 @@ public class LoadingManager : MonoBehaviour
         slider.transform.DOLocalMoveY(-500, 0.1f);
 
         AsyncOperation op = SceneManager.LoadSceneAsync(1);
-        float timer = 0;
         op.allowSceneActivation = false;
         while (!op.isDone)
         {
             await Task.Delay(1);
-            timer += Time.deltaTime;
-            if (op.progress < 0.9f)
+            slider.value = op.progress;
+            slider.value = Mathf.Lerp(slider.value, op.progress, Time.deltaTime);
+            if (op.progress >= 0.9f)
             {
-                slider.value = Mathf.Lerp(slider.value, op.progress, timer);
-                if (slider.value >= op.progress)
-                {
-                    timer = 0f;
-                }
-            }
-            else
-            {
-                slider.value = Mathf.Lerp(slider.value, 1f, timer);
-                if (Mathf.Approximately(slider.value, 1))
-                {
-                    op.allowSceneActivation = true;
-                    slider.transform.DOLocalMoveY(-1000, 0.1f);
-                    await Task.Delay(1000);
-                    break;
-                }
+                slider.value = Mathf.Lerp(slider.value, op.progress, Time.deltaTime);
+                await Task.Delay(1000);
+                op.allowSceneActivation = true;
+                slider.transform.DOLocalMoveY(-1000, 0.1f);
+                break;
             }
         }
     }
