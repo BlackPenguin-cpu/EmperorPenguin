@@ -1220,6 +1220,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 867066022288213028, guid: 970cd67af1e8e3c4b9d70db8de603170, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423734326375974073, guid: 970cd67af1e8e3c4b9d70db8de603170, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5175113972235370182, guid: 970cd67af1e8e3c4b9d70db8de603170, type: 3}
       propertyPath: m_Name
       value: HipHopPenguin
@@ -1807,6 +1815,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MagellanPenguin
       objectReference: {fileID: 0}
+    - target: {fileID: 5025872459374895173, guid: 43a4813bf3cbf914fa2b9e8d698962a1, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5879111962430361936, guid: 43a4813bf3cbf914fa2b9e8d698962a1, type: 3}
       propertyPath: ItemName
       value: "\uB9C8\uC824\uB780 \uD33D\uADC4"
@@ -1901,6 +1913,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8148367529743472810, guid: 43a4813bf3cbf914fa2b9e8d698962a1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8418161486294081752, guid: 43a4813bf3cbf914fa2b9e8d698962a1, type: 3}
+      propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -6649,7 +6665,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1332322192597620846, guid: 80fada542a8cc094ea0aa80847295539, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1332322192961338022, guid: 80fada542a8cc094ea0aa80847295539, type: 3}
       propertyPath: m_SizeDelta.x
@@ -7233,10 +7249,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5521750168101349992, guid: 867d34fd61be7474e819a6444911fc10, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7630416009440386008, guid: 867d34fd61be7474e819a6444911fc10, type: 3}
       propertyPath: IconImage
       value: 
       objectReference: {fileID: 21300000, guid: 94bcd77d9a0d9614eabb2bf77e85d712, type: 3}
+    - target: {fileID: 9064936393317886709, guid: 867d34fd61be7474e819a6444911fc10, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 867d34fd61be7474e819a6444911fc10, type: 3}
 --- !u!1 &901242469
@@ -8666,6 +8690,14 @@ PrefabInstance:
     - target: {fileID: 2890790298282162873, guid: 275278203b3cc004c83ddd1f228056ee, type: 3}
       propertyPath: m_Name
       value: GlassPenguin
+      objectReference: {fileID: 0}
+    - target: {fileID: 5957090392471535814, guid: 275278203b3cc004c83ddd1f228056ee, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7189991569484922971, guid: 275278203b3cc004c83ddd1f228056ee, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7350010250238556201, guid: 275278203b3cc004c83ddd1f228056ee, type: 3}
       propertyPath: m_Pivot.x
@@ -10163,6 +10195,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5600893705551821529, guid: 2abfb4d027d67b349b5e3a79f70a37b8, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8995502908266543684, guid: 2abfb4d027d67b349b5e3a79f70a37b8, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2abfb4d027d67b349b5e3a79f70a37b8, type: 3}
 --- !u!1 &1349246362
@@ -11401,6 +11441,10 @@ PrefabInstance:
       propertyPath: IconImage
       value: 
       objectReference: {fileID: 21300000, guid: 82b70d0f9be310748b75155801716887, type: 3}
+    - target: {fileID: 1524198142555693804, guid: 8d92e77705b2a4942916b88e220fed00, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2417491154784082435, guid: 8d92e77705b2a4942916b88e220fed00, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -11483,6 +11527,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2417491154784082435, guid: 8d92e77705b2a4942916b88e220fed00, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2615227130246390385, guid: 8d92e77705b2a4942916b88e220fed00, type: 3}
+      propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8039763648672946323, guid: 8d92e77705b2a4942916b88e220fed00, type: 3}
@@ -11719,6 +11767,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 848948223}
     m_Modifications:
+    - target: {fileID: 1143987235748027446, guid: 6324c4888e33f454aa3f1e655f269103, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2002398852237978899, guid: 6324c4888e33f454aa3f1e655f269103, type: 3}
       propertyPath: IconImage
       value: 
@@ -11809,6 +11861,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4272771537994376409, guid: 6324c4888e33f454aa3f1e655f269103, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4507099711937502379, guid: 6324c4888e33f454aa3f1e655f269103, type: 3}
+      propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8055155028003532832, guid: 6324c4888e33f454aa3f1e655f269103, type: 3}
@@ -12016,6 +12072,14 @@ PrefabInstance:
     - target: {fileID: 4037048920100696745, guid: 06ea5a51b606239408e3b769ce1f004b, type: 3}
       propertyPath: m_Name
       value: PooPenguin
+      objectReference: {fileID: 0}
+    - target: {fileID: 4806337824101075158, guid: 06ea5a51b606239408e3b769ce1f004b, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8349576761717737547, guid: 06ea5a51b606239408e3b769ce1f004b, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8509594987741835321, guid: 06ea5a51b606239408e3b769ce1f004b, type: 3}
       propertyPath: m_Pivot.x
@@ -16334,6 +16398,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SleepPenguin
       objectReference: {fileID: 0}
+    - target: {fileID: 6455543254097441488, guid: 501feb44f75f6134998691ad4cb1e0f5, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6652153372602567330, guid: 501feb44f75f6134998691ad4cb1e0f5, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -16416,6 +16484,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6652153372602567330, guid: 501feb44f75f6134998691ad4cb1e0f5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7564533863540519501, guid: 501feb44f75f6134998691ad4cb1e0f5, type: 3}
+      propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
