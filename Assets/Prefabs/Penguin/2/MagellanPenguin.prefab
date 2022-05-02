@@ -355,6 +355,7 @@ GameObject:
   - component: {fileID: 2578767368654094382}
   - component: {fileID: 8418161486294081752}
   - component: {fileID: 5879111962430361936}
+  - component: {fileID: 3338419668581987185}
   m_Layer: 5
   m_Name: MagellanPenguin
   m_TagString: Untagged
@@ -447,6 +448,51 @@ MonoBehaviour:
   firstLevelUpMoney: 50000
   LevelUpMoney: 10000
   incrementMoney: 93
+--- !u!114 &3338419668581987185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4542597157594454586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5879111962430361936}
+          m_TargetAssemblyTypeName: Jobbutton, Assembly-CSharp
+          m_MethodName: ButtonClick
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5879111962430361936}
+          m_TargetAssemblyTypeName: Jobbutton, Assembly-CSharp
+          m_MethodName: ButtonClickUp
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &4749228507609445575
 GameObject:
   m_ObjectHideFlags: 0
