@@ -16,7 +16,9 @@ public class Jusik : MonoBehaviour
     float curTime = 60;
     [SerializeField] float resetTime = 60;
     public int Count;
+    public long originalValue;
     public long nowValue;
+    bool delisting;
     [SerializeField] range upValue;
     [SerializeField] range downValue;
     [SerializeField] float upChance;
@@ -59,6 +61,15 @@ public class Jusik : MonoBehaviour
     }
     void JusikVariance()
     {
+        Image image = gameObject.transform.Find("Icon").GetComponent<Image>();
+        if (delisting)
+        {
+            delisting = false;
+            image.color = Color.white;
+            ValueChange.color = Color.white;
+            nowValue = originalValue;
+        }
+
         curTime = 0;
         long Value = nowValue;
         if (Random.Range(0, 100) < upChance)
@@ -67,6 +78,14 @@ public class Jusik : MonoBehaviour
             nowValue -= (int)(nowValue * (Random.Range(downValue.min, downValue.max) / 100));
 
         long changeValue = Value - nowValue;
+        if (nowValue < originalValue / 10)
+        {
+            image.color = Color.gray;
+            ValueChange.color = Color.gray;
+            ValueChange.text = "¡å" + GetThousandCommaText(changeValue);
+            delisting = true;
+            Count = 0;
+        }
 
         if (changeValue > 0)
         {

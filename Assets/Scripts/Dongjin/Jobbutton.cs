@@ -42,10 +42,10 @@ public class Jobbutton : ItemCard
             desc.text = "ÃÊ´ç Å‰µæ °ñµå" + "\n" + $"{GetThousandCommaText(BuyincrementMoney + incrementMoney * Level)} -> {GetThousandCommaText(BuyincrementMoney + incrementMoney * (Level + 1))}";
             LevelText.text = $"Lv.{Level}";
             }
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 10; i++)
             {
-                if (GameObject.Find("Penguins").transform.GetChild(i).GetComponent<Penguin>().Penguinidx == Penguinidx)
-                    GameObject.Find("Penguins").transform.GetChild(i).gameObject.SetActive(true);
+                if (GameObject.Find("BackGroundPenguin").transform.GetChild(i).GetComponent<Penguin>().Penguinidx == Penguinidx)
+                    GameObject.Find("BackGroundPenguin").transform.GetChild(i).gameObject.SetActive(true);
             }
         }
     }
@@ -53,10 +53,10 @@ public class Jobbutton : ItemCard
     {
         if (GameManager.Instance.Coin >= BuyMoney && Buy == false)
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 9; i++)
             {
-                if (GameObject.Find("Penguins").transform.GetChild(i).GetComponent<Penguin>().Penguinidx == Penguinidx)
-                    GameObject.Find("Penguins").transform.GetChild(i).gameObject.SetActive(true);
+                if (GameObject.Find("BackGroundPenguin").transform.GetChild(i).GetComponent<Penguin>().Penguinidx == Penguinidx)
+                    GameObject.Find("BackGroundPenguin").transform.GetChild(i).gameObject.SetActive(true);
             }
 
             GameManager.Instance.Coin -= BuyMoney;
@@ -82,7 +82,7 @@ public class Jobbutton : ItemCard
                 {
 
                 buttonText.text = "·¹º§¾÷" + "\n" + $"({GetThousandCommaText(firstLevelUpMoney + LevelUpMoney * Level)})";
-                desc.text = "ÃÊ´ç Å‰µæ °ñµå" + "\n" + $"{GetThousandCommaText(BuyincrementMoney + incrementMoney)} -> {GetThousandCommaText(BuyincrementMoney + incrementMoney * (Level + 1))}";
+                desc.text = "ÃÊ´ç Å‰µæ °ñµå" + "\n" + $"{GetThousandCommaText(BuyincrementMoney + incrementMoney*Level)} -> {GetThousandCommaText(BuyincrementMoney + incrementMoney * (Level + 1))}";
                 LevelText.text = $"Lv.{Level}";
                 }
             SoundManager.Instance.PlaySound("Buy", SoundType.SE, 1, 1);

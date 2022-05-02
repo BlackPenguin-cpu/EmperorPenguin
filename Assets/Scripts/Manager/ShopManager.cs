@@ -31,9 +31,10 @@ public class SaveData
     public long Coin;
     public long ClickCoin;
     public long SecCoin;
+    public double dateTime;
 
     public int leaderPenguinLevel;
-    public int[] PenguinLevel = new int[5];
+    public int[] PenguinLevel = new int[10];
 
     public List<estate> dataSturctures = new List<estate>();
 
@@ -47,7 +48,6 @@ public class ShopManager : MonoBehaviour
     string fileName = "SaveData";
     private void Awake()
     {
-
         if (!PlayerPrefs.HasKey("onSave")) return;
 
         if (!Directory.Exists(Application.persistentDataPath))
@@ -58,18 +58,21 @@ public class ShopManager : MonoBehaviour
         if (file == null) return;
         //string json = File.ReadAllText(path);
         string json = PlayerPrefs.GetString("SaveData");
-        if(json == null) return;
+        if (json == null) return;
         SaveData saveData = JsonUtility.FromJson<SaveData>(json);
+
+        GameManager.Instance.ClickCoinUp = saveData.ClickCoin;
         GameManager.Instance.Coin = saveData.Coin;
         GameManager.Instance.secCoinup = saveData.SecCoin;
-        //GameManager.Instance.ClickCoinUp = saveData.ClickCoin;
+        GameManager.Instance.beforeDateTime = saveData.dateTime;
 
         FindObjectOfType<LeaderPenguin>().Level = saveData.leaderPenguinLevel;
 
-        var penguins = FindObjectsOfType<Jobbutton>();
+        Jobbutton[] penguins = FindObjectsOfType<Jobbutton>();
         foreach (var penguin in penguins)
         {
-            penguin.Level = saveData.PenguinLevel[penguin.Penguinidx];
+            if (penguin.Penguinidx < saveData.PenguinLevel.Length)
+                penguin.Level = saveData.PenguinLevel[penguin.Penguinidx];
             if (penguin.Level > 0)
                 penguin.Buy = true;
         }
@@ -106,6 +109,7 @@ public class ShopManager : MonoBehaviour
         saveData.ClickCoin = GameManager.Instance.ClickCoinUp;
         saveData.Coin = GameManager.Instance.Coin;
         saveData.SecCoin = GameManager.Instance.secCoinup;
+        saveData.dateTime = GameManager.Instance.dateTime;
 
         saveData.leaderPenguinLevel = FindObjectOfType<LeaderPenguin>().Level;
 
@@ -153,7 +157,7 @@ public class ShopManager : MonoBehaviour
         //File.WriteAllText(path, json);
 
         PlayerPrefs.SetString("SaveData", json);
-        PlayerPrefs.SetInt("onSave",1);
+        PlayerPrefs.SetInt("onSave", 1);
         PlayerPrefs.Save();
     }
 }

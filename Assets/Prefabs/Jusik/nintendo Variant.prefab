@@ -113,7 +113,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6491513244664617996, guid: e62b926c6dc6e424b8679aeba94e7b2a, type: 3}
       propertyPath: upValue.max
-      value: 20
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 6491513244664617996, guid: e62b926c6dc6e424b8679aeba94e7b2a, type: 3}
       propertyPath: upValue.min
@@ -126,6 +126,10 @@ PrefabInstance:
     - target: {fileID: 6491513244664617996, guid: e62b926c6dc6e424b8679aeba94e7b2a, type: 3}
       propertyPath: downValue.min
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6491513244664617996, guid: e62b926c6dc6e424b8679aeba94e7b2a, type: 3}
+      propertyPath: originalValue
+      value: 800000
       objectReference: {fileID: 0}
     - target: {fileID: 7366074429113092167, guid: e62b926c6dc6e424b8679aeba94e7b2a, type: 3}
       propertyPath: m_Name

@@ -14,7 +14,7 @@ public class tilescript : MonoBehaviour
     [SerializeField] GameObject StartShowObject;
     [SerializeField] GameObject ExitButton;
     private Color color;
-
+    bool isStart;
 
     [SerializeField] LoadingManager Loading;
     private void Start()
@@ -56,8 +56,12 @@ public class tilescript : MonoBehaviour
     }
     public void StartButton()
     {
-        titleAudio.PlayOneShot(Resources.Load<AudioClip>("Sounds/Button_Click"), 1);
-        StartCoroutine("StartShow");
+        if (!isStart)
+        {
+            isStart = true;
+            titleAudio.PlayOneShot(Resources.Load<AudioClip>("Sounds/Button_Click"), 1);
+            StartCoroutine("StartShow");
+        }
     }
     IEnumerator StartShow()
     {
@@ -71,8 +75,12 @@ public class tilescript : MonoBehaviour
     }
     public void ExitButtons()
     {
-        titleAudio.PlayOneShot(Resources.Load<AudioClip>("Sounds/Button_Click"), 1);
-        StartCoroutine("ExitShow");
+        if (!isStart)
+        {
+            isStart = true;
+            titleAudio.PlayOneShot(Resources.Load<AudioClip>("Sounds/Button_Click"), 1);
+            StartCoroutine("ExitShow");
+        }
     }
     IEnumerator ExitShow()
     {
