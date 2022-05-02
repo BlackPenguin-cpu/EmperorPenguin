@@ -48,6 +48,7 @@ public class ShopManager : MonoBehaviour
     string fileName = "SaveData";
     private void Awake()
     {
+    return;
         if (!PlayerPrefs.HasKey("onSave")) return;
 
         if (!Directory.Exists(Application.persistentDataPath))

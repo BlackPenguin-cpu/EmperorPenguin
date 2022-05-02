@@ -19,7 +19,7 @@ public class GameManager : Singleton<GameManager>
     public GameObject waitBoard;
     public TextMeshProUGUI waitRewardGoldText;
     float waitGoldValue;
-    
+
     float Coolodwn;
     private void Start()
     {
@@ -41,13 +41,16 @@ public class GameManager : Singleton<GameManager>
     }
     void RestartRewardBoardOn()
     {
-        double value = dateTime - beforeDateTime;
-        waitGoldValue = Mathf.Clamp((float)value, 0, 18000);
-        waitGoldValue *= secCoinup;
+        if (secCoinup != 0)
+        {
+            double value = dateTime - beforeDateTime;
+            waitGoldValue = Mathf.Clamp((float)value, 0, 18000);
+            waitGoldValue *= secCoinup;
 
-        waitRewardGoldText.text = GetThousandCommaText((long)waitGoldValue);
-        waitBoard.SetActive(true);
-    } 
+            waitRewardGoldText.text = GetThousandCommaText((long)waitGoldValue);
+            waitBoard.SetActive(true);
+        }
+    }
     public void restartReward()
     {
         Coin += (long)waitGoldValue;
