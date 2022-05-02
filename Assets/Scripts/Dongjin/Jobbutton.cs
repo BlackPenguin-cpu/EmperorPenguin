@@ -5,6 +5,10 @@ using UnityEngine.UI;
 using TMPro;
 public class Jobbutton : ItemCard
 {
+    bool buttonClick;
+    float clickDuration;
+    float IconomeStack;
+
     [Header("구매 정보")]
     public int Penguinidx;
     public bool Buy;
@@ -91,6 +95,27 @@ public class Jobbutton : ItemCard
         {
             SoundManager.Instance.PlaySound("Don_t_Buy", SoundType.SE, 1, 1);
         }
+    }
+    private void Update()
+    {
+        if (buttonClick && clickDuration > 1)
+        {
+            for (int i = 0; i < IconomeStack; i++)
+                Action();
+            clickDuration -= 0.01f;
+            IconomeStack += 0.2f;
+        }
+    }
+
+    public void ButtonClick()
+    {
+        buttonClick = true;
+    }
+    public void ButtonClickUp()
+    {
+        buttonClick = false;
+        clickDuration = 0;
+        IconomeStack = 0;
     }
     public string GetThousandCommaText(long data)
     {

@@ -16,4 +16,5 @@ public class ShopButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         UITextMeshPro.transform.localPosition -= new Vector3(0, -10);
     }
+
 }

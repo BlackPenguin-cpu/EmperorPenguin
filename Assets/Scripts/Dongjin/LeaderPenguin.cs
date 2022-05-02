@@ -22,24 +22,27 @@ public class LeaderPenguin : ItemCard
     protected override void Start()
     {
         base.Start();
-        if (Level == 0) Level = 1;
-
+        if (Level == 0)
+        {
+            Level = 1;
+            GameManager.Instance.ClickCoinUp = firstincrementMoney;
+        }
         LevelText = gameObject.transform.Find("Level").GetComponent<TextMeshProUGUI>();
-        LevelText.text = $"Lv.{Level + 1}";
-        buttonText.text = $"{firstLevelUpMoney + LevelUpMoney * Level}원";
-        desc.text = "클릭 당 골드" + "\n" + $"{GetThousandCommaText(firstincrementMoney + incrementMoney * Level)}";
+        LevelText.text = $"Lv.{Level}";
+        buttonText.text = $"{firstLevelUpMoney + LevelUpMoney * (Level - 1)}원";
+        desc.text = "클릭 당 골드" + "\n" + $"{GetThousandCommaText(firstincrementMoney + incrementMoney * (Level - 1))}";
         //GameManager.Instance.ClickCoinUp += firstincrementMoney + incrementMoney * Level;
     }
     protected override void Action()
     {
-        if (GameManager.Instance.Coin >= firstLevelUpMoney + LevelUpMoney * Level)
+        if (GameManager.Instance.Coin >= firstLevelUpMoney + LevelUpMoney * (Level - 1))
         {
-            GameManager.Instance.Coin -= firstLevelUpMoney + LevelUpMoney * Level;
-            GameManager.Instance.ClickCoinUp = firstincrementMoney + incrementMoney * Level;
+            GameManager.Instance.Coin -= firstLevelUpMoney + LevelUpMoney * (Level - 1);
+            GameManager.Instance.ClickCoinUp += firstincrementMoney + incrementMoney * Level;
             Level++;
             LevelText.text = $"Lv.{Level}";
-            buttonText.text = $"{firstLevelUpMoney + LevelUpMoney * Level}원";
-            desc.text = "클릭 당 골드" + "\n" + $"{GetThousandCommaText(firstincrementMoney + incrementMoney * Level)}";
+            buttonText.text = $"{firstLevelUpMoney + LevelUpMoney * (Level - 1)}원";
+            desc.text = "클릭 당 골드" + "\n" + $"{GetThousandCommaText((firstincrementMoney + incrementMoney * Level) * (Level - 1))}";
             SoundManager.Instance.PlaySound("Buy", SoundType.SE, 1, 1);
         }
         else

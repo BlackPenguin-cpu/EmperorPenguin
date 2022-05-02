@@ -48,8 +48,7 @@ public class ShopManager : MonoBehaviour
     string fileName = "SaveData";
     private void Awake()
     {
-    return;
-        if (!PlayerPrefs.HasKey("onSave")) return;
+        if (!PlayerPrefs.HasKey("onSave2")) return;
 
         if (!Directory.Exists(Application.persistentDataPath))
             Directory.CreateDirectory(Application.persistentDataPath);
@@ -158,7 +157,7 @@ public class ShopManager : MonoBehaviour
         //File.WriteAllText(path, json);
 
         PlayerPrefs.SetString("SaveData", json);
-        PlayerPrefs.SetInt("onSave", 1);
+        PlayerPrefs.SetInt("onSave2", 1);
         PlayerPrefs.Save();
     }
 }
