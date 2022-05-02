@@ -29,8 +29,8 @@ public class LeaderPenguin : ItemCard
         }
         LevelText = gameObject.transform.Find("Level").GetComponent<TextMeshProUGUI>();
         LevelText.text = $"Lv.{Level}";
-        buttonText.text = $"{firstLevelUpMoney + LevelUpMoney * (Level - 1)}원";
-        desc.text = "클릭 당 골드" + "\n" + $"{GetThousandCommaText(firstincrementMoney + incrementMoney * (Level - 1))}";
+        buttonText.text = $"{firstincrementMoney + incrementMoney * Level}원";
+        desc.text = "클릭 당 골드" + "\n" + $"{firstincrementMoney + incrementMoney * Level}";
         //GameManager.Instance.ClickCoinUp += firstincrementMoney + incrementMoney * Level;
     }
     protected override void Action()
@@ -38,11 +38,11 @@ public class LeaderPenguin : ItemCard
         if (GameManager.Instance.Coin >= firstLevelUpMoney + LevelUpMoney * (Level - 1))
         {
             GameManager.Instance.Coin -= firstLevelUpMoney + LevelUpMoney * (Level - 1);
-            GameManager.Instance.ClickCoinUp += firstincrementMoney + incrementMoney * Level;
+            GameManager.Instance.ClickCoinUp = firstincrementMoney + incrementMoney * Level;
             Level++;
             LevelText.text = $"Lv.{Level}";
             buttonText.text = $"{firstLevelUpMoney + LevelUpMoney * (Level - 1)}원";
-            desc.text = "클릭 당 골드" + "\n" + $"{GetThousandCommaText((firstincrementMoney + incrementMoney * Level) * (Level - 1))}";
+            desc.text = "클릭 당 골드" + "\n" + $"{GetThousandCommaText(firstincrementMoney + incrementMoney * Level)}";
             SoundManager.Instance.PlaySound("Buy", SoundType.SE, 1, 1);
         }
         else

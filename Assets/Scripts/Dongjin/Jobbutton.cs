@@ -98,6 +98,7 @@ public class Jobbutton : ItemCard
     }
     private void Update()
     {
+        if (buttonClick) clickDuration += Time.deltaTime;
         if (buttonClick && clickDuration > 1)
         {
             for (int i = 0; i < IconomeStack; i++)

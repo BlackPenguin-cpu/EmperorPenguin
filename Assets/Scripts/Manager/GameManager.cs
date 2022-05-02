@@ -45,7 +45,7 @@ public class GameManager : Singleton<GameManager>
         {
             double value = dateTime - beforeDateTime;
             waitGoldValue = Mathf.Clamp((float)value, 0, 18000);
-            waitGoldValue *= secCoinup;
+            waitGoldValue *= secCoinup / 10;
 
             waitRewardGoldText.text = GetThousandCommaText((long)waitGoldValue);
             waitBoard.SetActive(true);
