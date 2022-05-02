@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
+using System;
 using UnityEngine;
 
 
@@ -31,7 +31,7 @@ public class SaveData
     public long Coin;
     public long ClickCoin;
     public long SecCoin;
-    public double dateTime;
+    public DateTime dateTime;
 
     public int leaderPenguinLevel;
     public int[] PenguinLevel = new int[10];

@@ -14,8 +14,8 @@ public class GameManager : Singleton<GameManager>
     public float CoinBouce;
 
     [Header("Wait Reward")]
-    public double dateTime;
-    public double beforeDateTime;
+    public DateTime dateTime;
+    public DateTime beforeDateTime;
     public GameObject waitBoard;
     public TextMeshProUGUI waitRewardGoldText;
     float waitGoldValue;
@@ -23,7 +23,7 @@ public class GameManager : Singleton<GameManager>
     float Coolodwn;
     private void Start()
     {
-        dateTime = DateTime.Now.TimeOfDay.TotalSeconds;
+        dateTime = DateTime.Now;
         RestartRewardBoardOn();
 
         SoundManager.Instance.PlaySound("Ingame", SoundType.BGM, 1, 1);
@@ -31,8 +31,9 @@ public class GameManager : Singleton<GameManager>
     private void Update()
     {
         Coolodwn += Time.deltaTime;
+        DateTime date = DateTime.Now;
 
-        dateTime = DateTime.Now.TimeOfDay.TotalSeconds;
+        dateTime = DateTime.Now;
         if (Coolodwn >= 1)
         {
             Coolodwn = 0;
@@ -43,8 +44,8 @@ public class GameManager : Singleton<GameManager>
     {
         if (secCoinup != 0)
         {
-            double value = dateTime - beforeDateTime;
-            waitGoldValue = Mathf.Clamp((float)value, 0, 18000);
+            TimeSpan value = dateTime - beforeDateTime;
+            waitGoldValue = Mathf.Clamp((float)value.TotalSeconds, 0, 18000);
             waitGoldValue *= secCoinup / 10;
 
             waitRewardGoldText.text = GetThousandCommaText((long)waitGoldValue);
