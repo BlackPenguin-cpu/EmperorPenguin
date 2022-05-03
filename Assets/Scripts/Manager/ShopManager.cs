@@ -31,7 +31,7 @@ public class SaveData
     public long Coin;
     public long ClickCoin;
     public long SecCoin;
-    public DateTime dateTime;
+    public string dateTime;
 
     public int leaderPenguinLevel;
     public int[] PenguinLevel = new int[10];
@@ -48,8 +48,8 @@ public class ShopManager : MonoBehaviour
     string fileName = "SaveData";
     private void Awake()
     {
-        if (!PlayerPrefs.HasKey("onSave3")) return;
-
+        if (!PlayerPrefs.HasKey("onSave4")) return;
+        
         if (!Directory.Exists(Application.persistentDataPath))
             Directory.CreateDirectory(Application.persistentDataPath);
 
@@ -64,7 +64,8 @@ public class ShopManager : MonoBehaviour
         GameManager.Instance.ClickCoinUp = saveData.ClickCoin;
         GameManager.Instance.Coin = saveData.Coin;
         GameManager.Instance.secCoinup = saveData.SecCoin;
-        GameManager.Instance.beforeDateTime = saveData.dateTime;
+        GameManager.Instance.beforeDateTime = DateTime.ParseExact(saveData.dateTime, "yyyyMMddHHmmss"
+            ,System.Globalization.CultureInfo.InvariantCulture);
 
         FindObjectOfType<LeaderPenguin>().Level = saveData.leaderPenguinLevel;
 
@@ -109,7 +110,7 @@ public class ShopManager : MonoBehaviour
         saveData.ClickCoin = GameManager.Instance.ClickCoinUp;
         saveData.Coin = GameManager.Instance.Coin;
         saveData.SecCoin = GameManager.Instance.secCoinup;
-        saveData.dateTime = GameManager.Instance.dateTime;
+        saveData.dateTime = GameManager.Instance.dateTime.ToString("yyyyMMddHHmmss");
 
         saveData.leaderPenguinLevel = FindObjectOfType<LeaderPenguin>().Level;
 
@@ -157,7 +158,7 @@ public class ShopManager : MonoBehaviour
         //File.WriteAllText(path, json);
 
         PlayerPrefs.SetString("SaveData", json);
-        PlayerPrefs.SetInt("onSave3", 1);
+        PlayerPrefs.SetInt("onSave4", 1);
         PlayerPrefs.Save();
     }
 }
