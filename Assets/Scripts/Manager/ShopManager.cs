@@ -67,30 +67,30 @@ public class ShopManager : MonoBehaviour
         GameManager.Instance.beforeDateTime = DateTime.ParseExact(saveData.dateTime, "yyyyMMddHHmmss"
             ,System.Globalization.CultureInfo.InvariantCulture);
 
-        FindObjectOfType<LeaderPenguin>().Level = saveData.leaderPenguinLevel;
+        FindObjectOfType<LeaderPenguin>().level = saveData.leaderPenguinLevel;
 
         Jobbutton[] penguins = FindObjectsOfType<Jobbutton>();
         foreach (var penguin in penguins)
         {
-            if (penguin.Penguinidx < saveData.PenguinLevel.Length)
-                penguin.Level = saveData.PenguinLevel[penguin.Penguinidx];
-            if (penguin.Level > 0)
-                penguin.Buy = true;
+            if (penguin.penguinidx < saveData.PenguinLevel.Length)
+                penguin.level = saveData.PenguinLevel[penguin.penguinidx];
+            if (penguin.level > 0)
+                penguin.isBuy = true;
         }
 
         var Structures = FindObjectsOfType<Realestate>();
         foreach (var Structure in Structures)
         {
-            estate obj = saveData.dataSturctures.Find(x => x.Name == Structure.ItemName);
-            Structure.ItemName = obj.Name;
+            estate obj = saveData.dataSturctures.Find(x => x.Name == Structure.itemName);
+            Structure.itemName = obj.Name;
             Structure.realMoney = obj.value;
             Structure.Buy = obj.isBuy;
         }
         var Jasans = FindObjectsOfType<JasanText>();
         foreach (JasanText jasan in Jasans)
         {
-            JasanData jasanData = saveData.jasanDatas.Find(x => x.Name == jasan.ItemName);
-            jasan.ItemName = jasanData.Name;
+            JasanData jasanData = saveData.jasanDatas.Find(x => x.Name == jasan.itemName);
+            jasan.itemName = jasanData.Name;
             jasan.Buy = jasanData.isBuy;
         }
 
@@ -112,18 +112,18 @@ public class ShopManager : MonoBehaviour
         saveData.SecCoin = GameManager.Instance.secCoinup;
         saveData.dateTime = GameManager.Instance.dateTime.ToString("yyyyMMddHHmmss");
 
-        saveData.leaderPenguinLevel = FindObjectOfType<LeaderPenguin>().Level;
+        saveData.leaderPenguinLevel = FindObjectOfType<LeaderPenguin>().level;
 
         var penguins = FindObjectsOfType<Jobbutton>();
         foreach (var penguin in penguins)
-            saveData.PenguinLevel[penguin.Penguinidx] = penguin.Level;
+            saveData.PenguinLevel[penguin.penguinidx] = penguin.level;
 
         var Structures = FindObjectsOfType<Realestate>();
         foreach (var Structure in Structures)
         {
             estate estate = new estate();
             estate.value = Structure.realMoney;
-            estate.Name = Structure.ItemName;
+            estate.Name = Structure.itemName;
             estate.isBuy = Structure.Buy;
             saveData.dataSturctures.Add(estate);
         }
@@ -132,7 +132,7 @@ public class ShopManager : MonoBehaviour
         foreach (JasanText jasan in Jasans)
         {
             JasanData jasann = new JasanData();
-            jasann.Name = jasan.ItemName;
+            jasann.Name = jasan.itemName;
             jasann.isBuy = jasan.Buy;
 
             saveData.jasanDatas.Add(jasann);

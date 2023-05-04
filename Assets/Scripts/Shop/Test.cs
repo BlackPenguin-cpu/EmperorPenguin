@@ -6,9 +6,9 @@ public class Test : ItemCard
 {
     protected override void Start()
     {
-        ItemName = "asd";
-        Description = "·Î³ª·Î³ª¶¥¶¥";
-        ButtonText = "1,000";
+        itemName = "asd";
+        description = "·Î³ª·Î³ª¶¥¶¥";
+        buttonTextString = "1,000";
 
         base.Start();
     }

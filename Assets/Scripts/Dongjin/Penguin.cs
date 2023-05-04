@@ -6,11 +6,11 @@ using TMPro;
 public class Penguin : MonoBehaviour
 {
 
-    [SerializeField] float ChatTime;
-    [SerializeField] GameObject Chat;
-    [SerializeField] Sprite[] Anima;
+    [SerializeField] float chatTime;
+    [SerializeField] GameObject chat;
+    [SerializeField] Sprite[] anime;
     private int idx = 0;
-    public int Penguinidx;
+    public int penguinidx;
     private void Start()
     {
         StartCoroutine("Chatting");
@@ -18,12 +18,12 @@ public class Penguin : MonoBehaviour
     }
     IEnumerator Chatting()
     {
-        yield return new WaitForSeconds(ChatTime);
+        yield return new WaitForSeconds(chatTime);
         if (Random.Range(0, 3) == 0)
         {
             SoundManager.Instance.PlaySound("Penguin", SoundType.SE, 15, 1);
             float timer = 1;
-            GameObject RandomChat = Chat.transform.GetChild(Random.Range(0, Chat.transform.childCount)).gameObject;
+            GameObject RandomChat = chat.transform.GetChild(Random.Range(0, chat.transform.childCount)).gameObject;
             RandomChat.transform.position = transform.position + new Vector3(2.1f, 2.3f, 0);
             Color color = RandomChat.GetComponent<Image>().color;
             color.a = timer;
@@ -47,7 +47,7 @@ public class Penguin : MonoBehaviour
     {
         yield return new WaitForSeconds(Random.Range(1, 4));
         idx = idx * -1 + 1;
-        GetComponent<SpriteRenderer>().sprite = Anima[idx];
+        GetComponent<SpriteRenderer>().sprite = anime[idx];
         StartCoroutine("AnimaSwap");
         yield return null;
     }

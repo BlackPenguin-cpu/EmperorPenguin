@@ -16,7 +16,7 @@ public class JasanText : ItemCard
         base.Start();
         if(Buy == false)
         {
-            buttonText.text = "±¸¸Å" + "\n" + $"({GetThousandCommaText(BuyMoney)})";
+            buttonText.text = "±¸¸Å" + "\n" + $"({GetThousandCommaText(buyMoney)})";
             desc.text = $"ÃÊ´ç Å‰µæ °ñµå / Å¬¸¯ ´ç Å‰µæ °ñµå\n{secincrement}/{clickincrement}";
         }
         else
@@ -28,17 +28,17 @@ public class JasanText : ItemCard
     }
     protected override void Action()
     {
-        if (GameManager.Instance.Coin >= BuyMoney && Buy == false)
+        if (GameManager.Instance.Coin >= buyMoney && Buy == false)
         {
             GameObject.Find("Jasans").transform.GetChild(Jasanidx).gameObject.SetActive(true);
-            GameManager.Instance.Coin -= BuyMoney;
+            GameManager.Instance.Coin -= buyMoney;
             GameManager.Instance.secCoinup += secincrement;
             GameManager.Instance.ClickCoinUp += clickincrement;
             buttonText.text = "±¸¸ÅÇÔ";
             Buy = true;
             SoundManager.Instance.PlaySound("Buy", SoundType.SE, 1, 1);
         }
-        else if (GameManager.Instance.Coin <= BuyMoney)
+        else if (GameManager.Instance.Coin <= buyMoney)
         {
             SoundManager.Instance.PlaySound("Don_t_Buy", SoundType.SE, 1, 1);
         }

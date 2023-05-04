@@ -10,6 +10,7 @@ public class Realestate : ItemCard
     [SerializeField] long incrementMoney;
     public long realMoney;
     private float timer;
+
     protected override void Start()
     {
         base.Start();
@@ -19,7 +20,7 @@ public class Realestate : ItemCard
         }
         else
         {
-            desc.text = "가격" + "\n" + BuyMoney;
+            desc.text = "가격" + "\n" + buyMoney;
             buttonText.text = "구매";
         }
     }
@@ -28,13 +29,13 @@ public class Realestate : ItemCard
         if (Buy == true)
             timer += Time.deltaTime;
         desc.text = "가격" + "\n" + GetThousandCommaText(realMoney) + $"(+{GetThousandCommaText(incrementMoney)}s)";
-        realMoney = BuyMoney + incrementMoney * (int)timer;
+        realMoney = buyMoney + incrementMoney * (int)timer;
     }
     protected override void Action()
     {
-        if (GameManager.Instance.Coin >= BuyMoney && Buy == false)
+        if (GameManager.Instance.Coin >= buyMoney && Buy == false)
         {
-            GameManager.Instance.Coin -= BuyMoney;
+            GameManager.Instance.Coin -= buyMoney;
             buttonText.text = "판매";
             SoundManager.Instance.PlaySound("Buy", SoundType.SE, 1, 1);
             Buy = true;
@@ -47,7 +48,7 @@ public class Realestate : ItemCard
             timer = 0;
             Buy = false;
         }
-        else if(GameManager.Instance.Coin <= BuyMoney)
+        else if(GameManager.Instance.Coin <= buyMoney)
         {
             SoundManager.Instance.PlaySound("Don_t_Buy", SoundType.SE, 1, 1);
         }

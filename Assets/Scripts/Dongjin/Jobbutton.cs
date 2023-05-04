@@ -5,20 +5,20 @@ using UnityEngine.UI;
 using TMPro;
 public class Jobbutton : ItemCard
 {
-    bool buttonClick;
+    bool isButtonClick;
     float clickDuration;
     float IconomeStack;
 
     [Header("±¸¸Å Á¤º¸")]
-    public int Penguinidx;
-    public bool Buy;
-    [SerializeField] int BuyincrementMoney;
+    public int penguinidx;
+    public bool isBuy;
+    [SerializeField] int buyincrementMoney;
     [Space(10)]
     [Header("·¹º§¾÷ Á¤º¸")]
-    public int Level;
-    [SerializeField] int MaxLevel;
+    public int level;
+    [SerializeField] int maxLevel;
     [SerializeField] int firstLevelUpMoney;
-    [SerializeField] int LevelUpMoney;
+    [SerializeField] int levelUpMoney;
     [SerializeField] int incrementMoney;
 
     private TextMeshProUGUI LevelText;
@@ -26,80 +26,80 @@ public class Jobbutton : ItemCard
     {
         base.Start();
         LevelText = gameObject.transform.Find("Level").GetComponent<TextMeshProUGUI>();
-        if (Buy == false)
+        if (isBuy == false)
         {
-            buttonText.text = "±¸¸Å" + "\n" + $"({GetThousandCommaText(BuyMoney)})";
-            buttonText.text = "°í¿ëÇÏ±â" + "\n" + $"({GetThousandCommaText(BuyMoney)})";
-            desc.text = "ÃÊ´ç Å‰µæ °ñµå" + "\n" + $"{GetThousandCommaText(BuyincrementMoney + incrementMoney * Level)}";
+            buttonText.text = "±¸¸Å" + "\n" + $"({GetThousandCommaText(buyMoney)})";
+            buttonText.text = "°í¿ëÇÏ±â" + "\n" + $"({GetThousandCommaText(buyMoney)})";
+            desc.text = "ÃÊ´ç Å‰µæ °ñµå" + "\n" + $"{GetThousandCommaText(buyincrementMoney + incrementMoney * level)}";
         }
         else
         {
-            if (Level == MaxLevel)
+            if (level == maxLevel)
             {
                 buttonText.text = "ÃÖ´ë ·¹º§";
-                desc.text = "ÃÊ´ç Å‰µæ °ñµå" + "\n" + $"{GetThousandCommaText(BuyincrementMoney + incrementMoney * Level)}";
+                desc.text = "ÃÊ´ç Å‰µæ °ñµå" + "\n" + $"{GetThousandCommaText(buyincrementMoney + incrementMoney * level)}";
                 LevelText.text = $"Lv.Max";
             }
             else
             {
-            buttonText.text = "·¹º§¾÷" + "\n" + $"({GetThousandCommaText(firstLevelUpMoney + LevelUpMoney * Level)})";
-            desc.text = "ÃÊ´ç Å‰µæ °ñµå" + "\n" + $"{GetThousandCommaText(BuyincrementMoney + incrementMoney * Level)} -> {GetThousandCommaText(BuyincrementMoney + incrementMoney * (Level + 1))}";
-            LevelText.text = $"Lv.{Level}";
+            buttonText.text = "·¹º§¾÷" + "\n" + $"({GetThousandCommaText(firstLevelUpMoney + levelUpMoney * level)})";
+            desc.text = "ÃÊ´ç Å‰µæ °ñµå" + "\n" + $"{GetThousandCommaText(buyincrementMoney + incrementMoney * level)} -> {GetThousandCommaText(buyincrementMoney + incrementMoney * (level + 1))}";
+            LevelText.text = $"Lv.{level}";
             }
             for (int i = 0; i < 10; i++)
             {
-                if (GameObject.Find("BackGroundPenguin").transform.GetChild(i).GetComponent<Penguin>().Penguinidx == Penguinidx)
+                if (GameObject.Find("BackGroundPenguin").transform.GetChild(i).GetComponent<Penguin>().penguinidx == penguinidx)
                     GameObject.Find("BackGroundPenguin").transform.GetChild(i).gameObject.SetActive(true);
             }
         }
     }
     protected override void Action()
     {
-        if (GameManager.Instance.Coin >= BuyMoney && Buy == false)
+        if (GameManager.Instance.Coin >= buyMoney && isBuy == false)
         {
             for (int i = 0; i < 9; i++)
             {
-                if (GameObject.Find("BackGroundPenguin").transform.GetChild(i).GetComponent<Penguin>().Penguinidx == Penguinidx)
+                if (GameObject.Find("BackGroundPenguin").transform.GetChild(i).GetComponent<Penguin>().penguinidx == penguinidx)
                     GameObject.Find("BackGroundPenguin").transform.GetChild(i).gameObject.SetActive(true);
             }
 
-            GameManager.Instance.Coin -= BuyMoney;
-            GameManager.Instance.secCoinup += BuyincrementMoney;
-            Buy = true;
+            GameManager.Instance.Coin -= buyMoney;
+            GameManager.Instance.secCoinup += buyincrementMoney;
+            isBuy = true;
             SoundManager.Instance.PlaySound("Buy", SoundType.SE, 1, 1);
-            Level++;
-            desc.text = "ÃÊ´ç Å‰µæ °ñµå" + "\n" + $"{GetThousandCommaText(BuyincrementMoney + incrementMoney)} -> {GetThousandCommaText(BuyincrementMoney + incrementMoney * (Level + 1))}";
-            buttonText.text = "·¹º§¾÷" + "\n" + $"({GetThousandCommaText(firstLevelUpMoney + LevelUpMoney * Level)})";
+            level++;
+            desc.text = "ÃÊ´ç Å‰µæ °ñµå" + "\n" + $"{GetThousandCommaText(buyincrementMoney + incrementMoney)} -> {GetThousandCommaText(buyincrementMoney + incrementMoney * (level + 1))}";
+            buttonText.text = "·¹º§¾÷" + "\n" + $"({GetThousandCommaText(firstLevelUpMoney + levelUpMoney * level)})";
         }
-        else if (GameManager.Instance.Coin >= firstLevelUpMoney + LevelUpMoney * Level && Level != MaxLevel)
+        else if (GameManager.Instance.Coin >= firstLevelUpMoney + levelUpMoney * level && level != maxLevel)
         {
-                GameManager.Instance.Coin -= firstLevelUpMoney + LevelUpMoney * Level;
+                GameManager.Instance.Coin -= firstLevelUpMoney + levelUpMoney * level;
                 GameManager.Instance.secCoinup += incrementMoney;
-                Level++;
-                if (Level == MaxLevel)
+                level++;
+                if (level == maxLevel)
                 {
                     buttonText.text = "ÃÖ´ë ·¹º§";
-                    desc.text = "ÃÊ´ç Å‰µæ °ñµå" + "\n" + $"{GetThousandCommaText(BuyincrementMoney + incrementMoney * Level)}";
+                    desc.text = "ÃÊ´ç Å‰µæ °ñµå" + "\n" + $"{GetThousandCommaText(buyincrementMoney + incrementMoney * level)}";
                     LevelText.text = $"Lv.Max";
                 }
                 else
                 {
 
-                buttonText.text = "·¹º§¾÷" + "\n" + $"({GetThousandCommaText(firstLevelUpMoney + LevelUpMoney * Level)})";
-                desc.text = "ÃÊ´ç Å‰µæ °ñµå" + "\n" + $"{GetThousandCommaText(BuyincrementMoney + incrementMoney*Level)} -> {GetThousandCommaText(BuyincrementMoney + incrementMoney * (Level + 1))}";
-                LevelText.text = $"Lv.{Level}";
+                buttonText.text = "·¹º§¾÷" + "\n" + $"({GetThousandCommaText(firstLevelUpMoney + levelUpMoney * level)})";
+                desc.text = "ÃÊ´ç Å‰µæ °ñµå" + "\n" + $"{GetThousandCommaText(buyincrementMoney + incrementMoney*level)} -> {GetThousandCommaText(buyincrementMoney + incrementMoney * (level + 1))}";
+                LevelText.text = $"Lv.{level}";
                 }
             SoundManager.Instance.PlaySound("Buy", SoundType.SE, 1, 1);
         }
-        else if (GameManager.Instance.Coin <= firstLevelUpMoney + LevelUpMoney * Level || GameManager.Instance.Coin <= BuyMoney)
+        else if (GameManager.Instance.Coin <= firstLevelUpMoney + levelUpMoney * level || GameManager.Instance.Coin <= buyMoney)
         {
             SoundManager.Instance.PlaySound("Don_t_Buy", SoundType.SE, 1, 1);
         }
     }
     private void Update()
     {
-        if (buttonClick) clickDuration += Time.deltaTime;
-        if (buttonClick && clickDuration > 1)
+        if (isButtonClick) clickDuration += Time.deltaTime;
+        if (isButtonClick && clickDuration > 1)
         {
             for (int i = 0; i < IconomeStack; i++)
                 Action();
@@ -110,11 +110,11 @@ public class Jobbutton : ItemCard
 
     public void ButtonClick()
     {
-        buttonClick = true;
+        isButtonClick = true;
     }
     public void ButtonClickUp()
     {
-        buttonClick = false;
+        isButtonClick = false;
         clickDuration = 0;
         IconomeStack = 0;
     }

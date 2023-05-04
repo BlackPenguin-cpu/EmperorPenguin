@@ -9,40 +9,40 @@ public class LeaderPenguin : ItemCard
     [SerializeField] int firstincrementMoney;
     [Space(10)]
     [Header("레벨업 정보")]
-    public int Level;
+    public int level;
     [SerializeField] int firstLevelUpMoney;
-    [SerializeField] int LevelUpMoney;
+    [SerializeField] int levelUpMoney;
     [SerializeField] int incrementMoney;
 
-    private TextMeshProUGUI LevelText;
+    private TextMeshProUGUI levelText;
 
     float clickDuration;
     bool isClicking;
-    float IconomeStack = 1;
+    float iconomeStack = 1;
     protected override void Start()
     {
         base.Start();
-        if (Level == 0)
+        if (level == 0)
         {
-            Level = 1;
+            level = 1;
             GameManager.Instance.ClickCoinUp = firstincrementMoney;
         }
-        LevelText = gameObject.transform.Find("Level").GetComponent<TextMeshProUGUI>();
-        LevelText.text = $"Lv.{Level}";
-        buttonText.text = $"{firstincrementMoney + incrementMoney * Level}원";
-        desc.text = "클릭 당 골드" + "\n" + $"{firstincrementMoney + incrementMoney * Level}";
+        levelText = gameObject.transform.Find("Level").GetComponent<TextMeshProUGUI>();
+        levelText.text = $"Lv.{level}";
+        buttonText.text = $"{firstincrementMoney + incrementMoney * level}원";
+        desc.text = "클릭 당 골드" + "\n" + $"{firstincrementMoney + incrementMoney * level}";
         //GameManager.Instance.ClickCoinUp += firstincrementMoney + incrementMoney * Level;
     }
     protected override void Action()
     {
-        if (GameManager.Instance.Coin >= firstLevelUpMoney + LevelUpMoney * (Level - 1))
+        if (GameManager.Instance.Coin >= firstLevelUpMoney + levelUpMoney * (level - 1))
         {
-            GameManager.Instance.Coin -= firstLevelUpMoney + LevelUpMoney * (Level - 1);
-            GameManager.Instance.ClickCoinUp = firstincrementMoney + incrementMoney * Level;
-            Level++;
-            LevelText.text = $"Lv.{Level}";
-            buttonText.text = $"{firstLevelUpMoney + LevelUpMoney * (Level - 1)}원";
-            desc.text = "클릭 당 골드" + "\n" + $"{GetThousandCommaText(firstincrementMoney + incrementMoney * Level)}";
+            GameManager.Instance.Coin -= firstLevelUpMoney + levelUpMoney * (level - 1);
+            GameManager.Instance.ClickCoinUp = firstincrementMoney + incrementMoney * level;
+            level++;
+            levelText.text = $"Lv.{level}";
+            buttonText.text = $"{firstLevelUpMoney + levelUpMoney * (level - 1)}원";
+            desc.text = "클릭 당 골드" + "\n" + $"{GetThousandCommaText(firstincrementMoney + incrementMoney * level)}";
             SoundManager.Instance.PlaySound("Buy", SoundType.SE, 1, 1);
         }
         else
@@ -58,10 +58,10 @@ public class LeaderPenguin : ItemCard
             clickDuration += Time.deltaTime;
             if (clickDuration > 1)
             {
-                for (int i = 0; i < IconomeStack; i++)
+                for (int i = 0; i < iconomeStack; i++)
                     Action();
                 clickDuration -= 0.01f;
-                IconomeStack += 0.2f;
+                iconomeStack += 0.2f;
             }
         }
     }
@@ -72,7 +72,7 @@ public class LeaderPenguin : ItemCard
     public void onClickUp()
     {
         isClicking = false;
-        IconomeStack = 1;
+        iconomeStack = 1;
         clickDuration = 0;
     }
 
